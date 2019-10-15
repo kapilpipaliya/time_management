@@ -3,7 +3,7 @@
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "sapper dev --no-hot",
     "build": "sapper build",
     "export": "sapper export",
     "start": "node __sapper__/build",
@@ -20,10 +20,16 @@
     "ws": "^7.1.2"
   },
   "devDependencies": {
+    "less": "^3.10.3",
     "npm-run-all": "^4.1.5",
+    "pug": "^2.0.4",
     "sapper": "^0.27.9",
     "svelte": "^3.12.1",
     "svelte-loader": "^2.13.6",
-    "webpack": "^4.41.0"
+    "svelte-preprocess": "^3.1.2",
+    "svelte-preprocess-less": "^0.4.0",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.1"
   }
 }

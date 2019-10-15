@@ -1,31 +1,8 @@
-<script>
-	export let status;
-	export let error;
-
-	const dev = process.env.NODE_ENV === 'development';
-</script>
-
-<style>
-	h1, p {
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: 2.8em;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
-</style>
+<script src='./__error-1-ctx.js' context='module'></script>
+<script src='./__error-2-inst.js'></script>
+<style src='./__error-3.less' lang='less'></style>
+<template src='./__error-4.pug'></template>
+<!-- manual_part -->
 
 <svelte:head>
 	<title>{status}</title>
@@ -38,3 +15,5 @@
 {#if dev && error.stack}
 	<pre>{error.stack}</pre>
 {/if}
+
+<!-- manual_part_end -->

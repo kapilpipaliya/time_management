@@ -6,11 +6,14 @@
 
 	%sapper.base%
 
-	<link rel='stylesheet' href='global.css'>
 	<link rel='manifest' href='manifest.json'>
-	<link rel='icon' type='image/png' href='favicon.png'>
+	<link rel='icon' type='image/png' href='images/favicon.png'>
 
-	<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+	<!-- on production use min build css also prefer cdn for static assets-->
+	<!-- <link rel="stylesheet" href="metro/css/metro-all.min.css?ver=@@b-version"> -->
+	<link rel="stylesheet" href="vendors/metro4/css/metro-all.css?ver=@@b-version">
+
+	<link rel='stylesheet' href='css/rollup.build.css'>
 	%sapper.styles%
 
 	%sapper.head%
