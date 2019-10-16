@@ -6,6 +6,6 @@ export class NotFound extends BaseService {
     this.NotFoundRequest = new NotFoundRequest();
     this.NotFoundResponse = new NotFoundResponse();
   }
-  // manual_part
-  // manual_part_end
+  // extend_class
+  // extend_class_end
 };

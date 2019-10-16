@@ -6,6 +6,6 @@ export class Logout extends BaseService {
     this.LogoutRequest = new LogoutRequest();
     this.LogoutResponse = new LogoutResponse();
   }
-  // manual_part
-  // manual_part_end
+  // extend_class
+  // extend_class_end
 };

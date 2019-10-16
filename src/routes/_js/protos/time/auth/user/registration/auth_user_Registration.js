@@ -6,6 +6,6 @@ export class Registration extends BaseService {
     this.RegistrationRequest = new RegistrationRequest();
     this.RegistrationResponse = new RegistrationResponse();
   }
-  // manual_part
-  // manual_part_end
+  // extend_class
+  // extend_class_end
 };

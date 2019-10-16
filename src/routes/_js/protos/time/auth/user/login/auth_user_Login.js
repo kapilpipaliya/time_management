@@ -6,6 +6,6 @@ export class Login extends BaseService {
     this.LoginRequest = new LoginRequest();
     this.LoginResponse = new LoginResponse();
   }
-  // manual_part
-  // manual_part_end
+  // extend_class
+  // extend_class_end
 };
