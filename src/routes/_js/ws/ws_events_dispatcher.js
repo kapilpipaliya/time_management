@@ -5,7 +5,7 @@ import IsomorphicWs from "isomorphic-ws";
 // import * as cookie from 'cookie';
 
 export class ServerEventsDispatcher {
-  constructor(path, req, res) {
+  constructor(path) {
     this.bind = this.bind.bind(this);
     this.unbind = this.unbind.bind(this);
     this.trigger = this.trigger.bind(this);
@@ -17,9 +17,6 @@ export class ServerEventsDispatcher {
     this.dispatch = this.dispatch.bind(this);
     
     this.path = path
-    this.req = req
-    this.res = res
-    this.setupConnection()
     this.callbacks = {};
   }
 
@@ -34,7 +31,7 @@ export class ServerEventsDispatcher {
     this.callbacks[event1 + '_' + event2] = [];
   }
   trigger (event1, event2, data) {
-    const f = this.triggerFile
+    const f = this.trigger
     switch (this.conn.readyState) {
       case 0: // CONNECTING
         // code block
@@ -44,12 +41,12 @@ export class ServerEventsDispatcher {
         })
         return this;
       case 1: // OPEN
-        this.conn.send([event1, event2, ...data]); // <= send data to socket server
+        this.conn.send(new Uint8Array([event1, event2, ...data])); // <= send data to socket server
         return this;
       case 2: // CLOSING
       case 3: //CLOSED
         // try to reconnect/logout
-        this.setupConnection()
+        this.setupConnection(this.req, this.res)
         this.conn.addEventListener("open", function() {
           f(event1, event2, data)
         })
@@ -61,18 +58,23 @@ export class ServerEventsDispatcher {
   };
 
   // private functions: 
-  setupConnection() {
+  setupConnection(req, res) {
+    this.req = req
+    this.res = res
     if (!process.browser) { 
       process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     }
-    const c = process.browser ? undefined : { 'headers': { 'Cookie': this.req.headers.cookie || null } };
-    this.conn = new IsomorphicWs(this.path, [], c);
-    // dispatch to the right handlers
-    this.conn.onmessage = this.onmessage;
+    if(!this.conn || this.conn.CLOSED || this.conn.CLOSING){
+      const c = process.browser ? undefined : { 'headers': { 'Cookie': this.req.headers.cookie || null } };
+      this.conn = new IsomorphicWs(this.path, [], c);
+      this.conn.binaryType = "arraybuffer"
+      // dispatch to the right handlers
+      this.conn.onmessage = this.onmessage;
 
-    this.conn.onclose = this.onclose;
-    //this.conn.onopen = this.onopen;
-    this.conn.addEventListener("open", this.onopen);
+      this.conn.onclose = this.onclose;
+      //this.conn.onopen = this.onopen;
+      this.conn.addEventListener("open", this.onopen);
+    }
   }
 
   onmessage (evt) {

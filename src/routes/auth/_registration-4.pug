@@ -1,10 +1,10 @@
 //- manual_part
 .h-vh-100.d-flex.flex-justify-center.flex-align-center
   .login-box
-    form.bg-white.p-4(action='javascript:' data-role='validator' data-clear-invalid='2000' data-on-error-form='invalidForm')
+    form.bg-white.p-4(action='javascript:' data-role='validator' data-clear-invalid='2000' data-on-error-form='invalidForm' on:submit|preventDefault='{save}')
       img.place-right.mt-4-minus.mr-5-minus(alt='image' src='images/pandora/images/p-120x120.png')
       h1.mb-0 Register
-      .text-muted.mb-4 Register a new membership
+      .text-muted.mb-4 Register a new membership {hello}
       .form-group
         input(type='text' data-role='input' placeholder='Full name' data-append="<span class='mif-user'>" data-validate='required')
         span.invalid_feedback Please enter a valid email address

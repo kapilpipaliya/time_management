@@ -21,9 +21,11 @@ export const product_img_url = `${server.http_proto}://${server.domain}:${server
 export const thumb_url = `${server.http_proto}://${server.domain}:${server.port}/http/v1/user/thumb_id`
 
 let e;
-if (process.browser) { 
+/*if (process.browser) { 
   e = new ServerEventsDispatcher(ws_todo)
  } else {
+   // we use class on server because we want to pass cookie to IsomorphicWs constructor from scrip context=module
    e = ServerEventsDispatcher;
- }
-export const Server = e
+ }*/
+// export const Server = e
+export const S = new ServerEventsDispatcher(ws_todo)
