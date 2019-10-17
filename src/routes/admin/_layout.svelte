@@ -7,14 +7,16 @@
     // var link = J(".navview-menu a[href*="+target+"]");
     // var menu = link.closest("ul[data-role=dropdown]");
   });
+  //.expanded-xl role note working so added the class manually.
 </script>
 <template lang="pug">
-div(data-role='navview' data-toggle='#paneToggle' data-expanded='xl' data-compact='lg' data-active-state='true')
+div.expanded-xl(data-role='navview' data-toggle='#paneToggle' data-expanded='xl' data-compact='lg' data-active-state='true')
   .navview-pane
     .bg-cyan.d-flex.flex-align-center
       button.pull-button.m-0.bg-darkCyan-hover
         span.mif-menu.fg-white
       h2.text-light.m-0.fg-white.pl-7(style='line-height: 52px') Pandora
+
     .suggest-box
       .data-box
         img.avatar(src='images/pandora/images/jek_vorobey.jpg' alt='image')
@@ -364,6 +366,7 @@ div(data-role='navview' data-toggle='#paneToggle' data-expanded='xl' data-compac
       div
         | Created with 
         a.text-muted.fg-white-hover.no-decor(href='https://metroui.org.ua') Metro 4
+        
   .navview-content.h-100
     .pos-absolute.bg-darkCyan.fg-white(data-role='appbar')
       a#paneToggle.app-bar-item.d-block.d-none-lg(href='javascript:void()')
