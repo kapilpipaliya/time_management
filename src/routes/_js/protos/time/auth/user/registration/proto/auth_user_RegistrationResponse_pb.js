@@ -68,7 +68,8 @@ proto.timeservice.RegistrationResponse.prototype.toObject = function(opt_include
 proto.timeservice.RegistrationResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    token: jspb.Message.getFieldWithDefault(msg, 2, "")
+    token: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    errorMsg: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -113,6 +114,10 @@ proto.timeservice.RegistrationResponse.deserializeBinaryFromReader = function(ms
       var value = /** @type {string} */ (reader.readString());
       msg.setToken(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMsg(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -156,6 +161,13 @@ proto.timeservice.RegistrationResponse.serializeBinaryToWriter = function(messag
       f
     );
   }
+  f = message.getErrorMsg();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -165,7 +177,9 @@ proto.timeservice.RegistrationResponse.serializeBinaryToWriter = function(messag
 proto.timeservice.RegistrationResponse.ErrorStatus = {
   OK: 0,
   INVALID_USERNAME: 1,
-  WEAK_PASSWORD: 2
+  WEAK_PASSWORD: 2,
+  USERNAME_EXIST: 3,
+  UNKNOWN_ERROR: 4
 };
 
 /**
@@ -201,6 +215,24 @@ proto.timeservice.RegistrationResponse.prototype.getToken = function() {
  */
 proto.timeservice.RegistrationResponse.prototype.setToken = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string error_msg = 3;
+ * @return {string}
+ */
+proto.timeservice.RegistrationResponse.prototype.getErrorMsg = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.timeservice.RegistrationResponse} returns this
+ */
+proto.timeservice.RegistrationResponse.prototype.setErrorMsg = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

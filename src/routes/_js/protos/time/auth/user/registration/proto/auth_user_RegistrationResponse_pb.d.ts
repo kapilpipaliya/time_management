@@ -10,6 +10,9 @@ export class RegistrationResponse extends jspb.Message {
   getToken(): string;
   setToken(value: string): void;
 
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RegistrationResponse.AsObject;
   static toObject(includeInstance: boolean, msg: RegistrationResponse): RegistrationResponse.AsObject;
@@ -24,12 +27,15 @@ export namespace RegistrationResponse {
   export type AsObject = {
     status: RegistrationResponse.ErrorStatusMap[keyof RegistrationResponse.ErrorStatusMap],
     token: string,
+    errorMsg: string,
   }
 
   export interface ErrorStatusMap {
     OK: 0;
     INVALID_USERNAME: 1;
     WEAK_PASSWORD: 2;
+    USERNAME_EXIST: 3;
+    UNKNOWN_ERROR: 4;
   }
 
   export const ErrorStatus: ErrorStatusMap;

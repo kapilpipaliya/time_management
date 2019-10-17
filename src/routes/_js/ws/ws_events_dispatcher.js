@@ -20,7 +20,7 @@ export class ServerEventsDispatcher {
     this.callbacks = {};
   }
 
-  bind (event1, event2, callback, handleMultiple=0) {
+  bind (event1, event2, handleMultiple=0, callback, ) {
     const event = event1 + '_' + event2
     this.callbacks[event] = this.callbacks[event] || [];
     this.callbacks[event].push([handleMultiple, callback]); // 0 means bindonce.
@@ -104,15 +104,17 @@ export class ServerEventsDispatcher {
     //this.dispatch(0, 3, null) 
   }
 
-  dispatch (data) {
+  dispatch (arraybuffer) {
+    const data = new Uint8Array(arraybuffer)
     const event0 = data[0]
     const event1 = data[1]
     const event = event0 + '_' + event1
-    const bytes = Array.prototype.slice.call(data, 2)
+
     const chain = this.callbacks[event];
     if (typeof chain == 'undefined') return; // no callbacks for this event
+    const bytes = Array.prototype.slice.call(data, 2)
     for (let i = 0; i < chain.length; i++) {
-      chain[i][1](event0, event1, bytes)
+      chain[i][1](bytes)
       if(chain[i][0] == 0) {
         this.callbacks[event] = []
       }
