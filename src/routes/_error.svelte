@@ -2,6 +2,7 @@
 //import {} from './_js/protos/time/notfound/proto/NotFoundRequest_pb.js'
 //import {} from './_js/protos/time/notfound/proto/NotFoundResponse_pb.js'
 import { S } from './_js/ws/ws_todo.js'
+import {event} from './_js/events/event.js'
 // ctx_import
 // ctx_import_end
 export async function preload(page, session) {
@@ -9,10 +10,14 @@ S.setupConnection(this.req, this.res)
 // export
 // export_end
 }
-// ctx
-// ctx_end
 </script>
-<script src='./__error-2-inst.js'></script>
+<script>
+// inst
+export let status;
+export let error;
+const dev = process.env.NODE_ENV === 'development';
+// inst_end
+</script>
 <style src='./__error-3.less' lang='less'></style>
 <template src='./__error-4.pug'></template>
 <!-- component -->
