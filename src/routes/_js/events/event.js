@@ -6,4 +6,5 @@ var event;
     event[event["auth_user_login"] = 11] = "auth_user_login";
     event[event["auth_user_logout"] = 12] = "auth_user_logout";
     event[event["admin_dashboard"] = 13] = "admin_dashboard";
+    event[event["menu"] = 14] = "menu";
 })(event = exports.event || (exports.event = {}));
