@@ -1,2 +1,21 @@
 //- pug
+ul#side-menu.navview-menu.mt-4
+  //- optional:
+  li.item-header MAIN NAVIGATION
+  +each('menu_data as m')
+    li
+      a(href="{m.children ? null : m.path}" class:dropdown-toggle='{!!m.children}')
+        span.icon
+          span(class='{m.icon}')
+        span.caption {m.name}
+      ul.navview-menu.stay-open(data-role='dropdown')
+        +if('m.children && m.children.length > 0')
+          +each('m.children as c')
+            li
+              a(href="{c.children ? null : c.path}" class:dropdown-toggle='{!!c.children}')
+                span.icon
+                  span(class='{c.icon}')
+                span.caption {c.name}
+
+
 //- pug_end

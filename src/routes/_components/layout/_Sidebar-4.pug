@@ -1,0 +1,31 @@
+//- pug
+.navview-pane
+  .bg-cyan.d-flex.flex-align-center
+    button.pull-button.m-0.bg-darkCyan-hover
+      span.mif-menu.fg-white
+    h2.text-light.m-0.fg-white.pl-7(style='line-height: 52px') Pandora
+
+  .suggest-box
+    .data-box
+      img.avatar(src='images/pandora/images/jek_vorobey.jpg' alt='image')
+      .ml-4.avatar-title.flex-column
+        a.d-block.fg-white.text-medium.no-decor(href='#!')
+          span.reduce-1 Jack Sparrow
+        p.m-0
+          span.fg-green.mr-2 &#x25CF;
+          span.text-small online
+    img.avatar.holder.ml-2(src='images/pandora/images/jek_vorobey.jpg' alt='image')
+  .suggest-box
+    input(type='text' data-role='input' data-clear-button='false' data-search-button='true')
+    button.holder
+      span.mif-search.fg-white
+  Menu(menu_name="{menu_name}")
+  .w-100.text-center.text-small.data-box.p-2.border-top.bd-grayMouse(style='position: absolute; bottom: 0')
+    div
+      | &copy; 2019 
+      a.text-muted.fg-white-hover.no-decor(href='mailto:sergey@pimenov.com.ua') Sergey Pimenov
+    div
+      | Created with 
+      a.text-muted.fg-white-hover.no-decor(href='https://metroui.org.ua') Metro 4
+
+//- pug_end

@@ -1,0 +1,33 @@
+//- pug
+.pos-absolute.bg-darkCyan.fg-white(data-role='appbar')
+  a#paneToggle.app-bar-item.d-block.d-none-lg(href='javascript:void()')
+    span.mif-menu
+  .app-bar-container.ml-auto
+    a.app-bar-item(href='#!')
+      span.mif-envelop
+      span.badge.bg-green.fg-white.mt-2.mr-1 4
+    a.app-bar-item(href='#!')
+      span.mif-bell
+      span.badge.bg-orange.fg-white.mt-2.mr-1 10
+    a.app-bar-item(href='#!')
+      span.mif-flag
+      span.badge.bg-red.fg-white.mt-2.mr-1 9
+    .app-bar-container
+      a.app-bar-item(href='#!')
+        img.avatar(src='images/pandora/images/jek_vorobey.jpg' alt='image')
+        span.ml-2.app-bar-name Jack Sparrow
+      .user-block.shadow-1(data-role='collapse' data-collapsed='true')
+        .bg-darkCyan.fg-white.p-2.text-center
+          img.avatar(src='images/pandora/images/jek_vorobey.jpg' alt='image')
+          .h4.mb-0 Jack Sparrow
+          div Pirate captain
+        .bg-white.d-flex.flex-justify-between.flex-equal-items.p-2
+          button.button.flat-button Followers
+          button.button.flat-button Sales
+          button.button.flat-button Friends
+        .bg-white.d-flex.flex-justify-between.flex-equal-items.p-2.bg-light
+          button.button.mr-1 Profile
+          button.button.ml-1 Sign out
+    a.app-bar-item(href='#!')
+      span.mif-cogs
+//- pug_end
