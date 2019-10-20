@@ -1,4 +1,4 @@
-// source: time/auth/user/registration/proto/auth_user_RegistrationResponse.proto
+// source: time/account/registration/proto/account_RegistrationResponse.proto
 /**
  * @fileoverview
  * @enhanceable

@@ -1,7 +1,7 @@
 export enum event {
-auth_user_registration=10,
-auth_user_login,
-auth_user_logout,
+account_registration=10,
+account_login,
+account_logout,
 admin_dashboard,
 menu
 }

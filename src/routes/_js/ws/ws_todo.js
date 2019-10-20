@@ -28,4 +28,4 @@ let e;
    e = ServerEventsDispatcher;
  }*/
 // export const Server = e
-export const S = new ServerEventsDispatcher(ws_todo)
+export const Ws = new ServerEventsDispatcher(ws_todo)

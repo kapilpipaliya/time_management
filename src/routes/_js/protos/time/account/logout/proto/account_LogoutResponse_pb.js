@@ -1,4 +1,4 @@
-// source: time/auth/user/logout/proto/auth_user_LogoutResponse.proto
+// source: time/account/logout/proto/account_LogoutResponse.proto
 /**
  * @fileoverview
  * @enhanceable

@@ -1,5 +1,5 @@
 // package: timeservice
-// file: time/auth/user/logout/proto/auth_user_LogoutResponse.proto
+// file: time/account/logout/proto/account_LogoutResponse.proto
 
 import * as jspb from "google-protobuf";
 

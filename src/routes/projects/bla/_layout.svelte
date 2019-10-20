@@ -1,7 +1,7 @@
 <script context='module'>
-import { S } from '../../_js/ws/ws_todo.js'
+import { Ws } from '../../_js/ws/ws_todo.js'
 export async function preload(page, session) {
-S.setupConnection(this.req, this.res)
+Ws.setupConnection(this.req, this.res)
 // export
 // export_end
 }

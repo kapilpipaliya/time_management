@@ -2,6 +2,7 @@
 Simplified WebSocket events dispatcher
 */
 import IsomorphicWs from "isomorphic-ws";
+//import  S from 'sanctuary'
 // import * as cookie from 'cookie';
 
 export class ServerEventsDispatcher {
@@ -21,6 +22,12 @@ export class ServerEventsDispatcher {
   }
 
   bind (event1, event2, handleMultiple=0, callback, ) {
+    if(!Number.isInteger(event1)){
+      throw "event1 must be a number but its value is: " + event1
+    }
+    if(!Number.isInteger(event2)){
+      throw "event2 must be a number but its value is: " + event2
+    }
     const event = event1 + '_' + event2
     this.callbacks[event] = this.callbacks[event] || [];
     this.callbacks[event].push([handleMultiple, callback]); // 0 means bindonce.

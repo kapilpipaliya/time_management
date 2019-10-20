@@ -1,5 +1,5 @@
 // package: timeservice
-// file: time/auth/user/registration/proto/auth_user_RegistrationResponse.proto
+// file: time/account/registration/proto/account_RegistrationResponse.proto
 
 import * as jspb from "google-protobuf";
 
