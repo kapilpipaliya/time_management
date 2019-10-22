@@ -1,5 +1,4 @@
 <script context='module'>
-
 import {RegistrationRequest} from '../_js/protos/time/account/registration/proto/account_RegistrationRequest_pb.js'
 import {RegistrationResponse} from '../_js/protos/time/account/registration/proto/account_RegistrationResponse_pb.js'
 import { Ws } from '../_js/ws/ws_todo.js'

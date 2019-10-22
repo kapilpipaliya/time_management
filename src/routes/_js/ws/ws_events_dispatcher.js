@@ -71,7 +71,7 @@ export class ServerEventsDispatcher {
     if (!process.browser) { 
       process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     }
-    if(!this.conn || this.conn.CLOSED || this.conn.CLOSING){
+    if(!this.conn || this.conn.readyState == this.conn.CLOSED || this.conn.readyState == this.conn.CLOSING){
       const c = process.browser ? undefined : { 'headers': { 'Cookie': this.req.headers.cookie || null } };
       this.conn = new IsomorphicWs(this.path, [], c);
       this.conn.binaryType = "arraybuffer"

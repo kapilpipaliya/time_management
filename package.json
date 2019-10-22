@@ -17,9 +17,14 @@
     "google-protobuf": "^3.10.0",
     "isomorphic-ws": "^4.0.1",
     "polka": "next",
+    "rollup": "^1.25.1",
     "sanctuary": "^2.0.0",
     "sirv": "^0.4.2",
-    "ws": "^7.2.0"
+    "svelte-inspect": "^0.1.0",
+    "svelte-select": "^3.0.2",
+    "sveltejs-forms": "^1.0.0",
+    "ws": "^7.2.0",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "less": "^3.10.3",

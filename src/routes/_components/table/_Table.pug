@@ -1,0 +1,119 @@
+| {er}
+div
+  span {items.length}{items.length <= 1 ? &quot; item&quot; : &quot; items&quot;}
+  button(on:click='{toogleAddForm}' class='{addnewform ? "pure-button pressed" : "pure-button"'}) Add New
+  +if('addnewform')
+    svelte:component(this='{quickcomponent}' rowidx='{null}' hs='{headersSelectors}' event='{"ins"}' on:close='{toogleAddForm}' on:successsave='{successSave' })
+    hr
+  button.pure-button(on:click='{resetFilter}') Reset Filters
+  |   Page Size: 
+  input.w60(type='number' bind:value='{limit}' on:change='{limitChange}' min='0')
+
+  button.pure-button(on:click='{refresh}') Refresh
+
+  |   Page:
+  select(bind:value='{current_page}' on:change='{refresh}')
+    +each('pages as p')
+      option(value='{p}') {p}
+  | &nbsp;/&nbsp;{total}
+
+
+  table.table.is-striped.is-hoverable
+    thead
+      tr
+        th Actions
+          +each('headers as h, index')
+            +if('visible_columns[index]')
+              th(on:click='{(e) => handleSort(e, index)}' on:contextmenu|preventDefault='{onHeaderContext}')
+                | {h}
+                +if('sortSettings[index] === 0')
+                  | ▲
+                +elseif('sortSettings[index] === 1')
+                  | ▼
+                +else()
+        //- th(width="100px") Actions
+      tr
+        th
+          +each('headers as h, index')
+            +if('visible_columns[index]')
+              +if('customFilter[index]')
+                th
+                  select(bind:value='{filterSettings[index]}' on:change='{handleFilter(index)}')
+                    +each(' customFilter[index] as f')
+                      option(value='{f[1]}') {f[0]}
+
+              +elseif('!hiddenColumns.includes(headerColTypes[index])')
+                +if('headerColTypes[index] === 20 || headerColTypes[index] === 23')
+                  th
+                    input(type='numer' bind:value='{filterSettings[index]}' on:input='{handleFilter(index)}' on:contextmenu|preventdefault='{onTextInputContext}')
+                +elseif('headerColTypes[index] === 25')
+                  th
+                    input(type='text' bind:value='{filterSettings[index]}' on:input='{handleFilter(index)}' on:contextmenu|preventdefault='{onTextInputContext}')
+                +elseif('headerColTypes[index] === 701')
+                  th
+                    input(type='numer' bind:value='{filterSettings[index]}' on:input='{handleFilter(index)}' on:contextmenu|preventdefault='{onTextInputContext}' step='any')
+                +elseif('headerColTypes[index] === 1114')
+                  th Date
+                +else()
+                  th Unknown Type
+              +else()
+                th
+        //- <th width="100px"></th>
+    tbody
+      +each('items as l, cindex')
+        +if('l')
+          +if('!quickview[cindex]')
+            tr(class_='hidden_attrs')
+              td
+                .row-actions                 
+                  button.pure-button(type='button' on:click='{()=> {quickview[cindex] = true }') Edit
+                  button.pure-button(type='button' on:click='{deleteRow2(cindex)}')  D 
+              +each(' l as c, index')
+                +if('visible_columns[index]')
+                  td(title='{l[index + (tooltip_offset_columns[index] || 0)]}')
+                    +if('l[index + (offset_columns[index] || 0)] != null')
+                      +if('headerColTypes[index] === 1114')
+                        | {new Date(l[index + (offset_columns[index] || null)]).toLocaleString()}
+                      +else()
+                        | {l[index + (offset_columns[index] || 0)]}
+                    +if('index === first_visibile_column')
+                      div
+        +if('quickview[cindex]')
+          tr
+            td(colspan='{l.length}')
+              +if('quickcomponent')
+                svelte:component(this='{quickcomponent}' rowidx='{cindex}' item='{l}' hs='{headersSelectors}' event='{"upd"}' on:close='{(event) => quickview[event.detail] = false' on:successSave='{successSave }' on:deleteRow='{deleteRow }')
+
+    .menu
+      .menu-item Share On Facebook
+      .menu-item Share On Twitter
+      hr
+      .menu-item Search On Google
+      .menu-item Search On Bing
+      hr
+      .menu-item Bookmark
+    .menu-input
+      .menu-item(on:click='{closeInputMenu}') Close
+      hr
+      .menu-item What&apos;s This?
+      hr
+      .menu-item Is NULL
+      .menu-item Is not NULL
+      .menu-item Is empty
+      .menu-item Is not empty
+      hr
+      .menu-item Equal to...
+      .menu-item Not equal to...
+      .menu-item Greater than...
+      .menu-item Less than...
+      .menu-item Greater or equal...
+      .menu-item Less or equal...
+      .menu-item In range...
+    .menu
+      .menu-item Share On Facebook
+      .menu-item Share On Twitter
+      hr
+      .menu-item Search On Google
+      .menu-item Search On Bing
+      hr
+      .menu-item Bookmark

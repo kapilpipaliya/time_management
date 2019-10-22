@@ -4,7 +4,7 @@ ul#side-menu.navview-menu.mt-4
   li.item-header MAIN NAVIGATION
   +each('menu_data as m')
     li
-      a(href="{m.children ? null : m.path}" class:dropdown-toggle='{!!m.children}')
+      a(href="{m.children ? null : m.path}" class:dropdown-toggle='{!!m.children}' on:click="{onHeaderClick(m)}")
         span.icon
           span(class='{m.icon}')
         span.caption {m.name}
