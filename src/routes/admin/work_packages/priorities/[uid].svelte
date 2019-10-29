@@ -3,7 +3,7 @@
         return {uid_param: page.params.uid}
     }
 </script>
-<script lang="typescript">
+<script lang='ts'>
     import {TitleBar, Form, Input, ShowError} from 'index.ts';
     import {CRUD, A} from './_form.ts'
 
