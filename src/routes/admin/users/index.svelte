@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang='ts'>
     import * as A from 'index.ts'
     import {CRUD} from './_form.ts'
     import {onMount, Table, Th, Tr, Pagination, ShowError, Add, TdEdit, TdDelete} from '../../../node_modules/index.ts'
@@ -16,7 +16,7 @@
         //fetch();
         c.fetch();
     });
-
+    (ShowError, Add, Table, Th, Tr, TdEdit, TdDelete, Pagination)
 
 </script>
 <template src='./_index.pug'></template>

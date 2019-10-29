@@ -16,6 +16,7 @@
         //fetch();
         c.fetch();
     });
+    (ShowError, Add, Table, Th, Tr, TdEdit, TdDelete, Pagination)
 
 
 </script>

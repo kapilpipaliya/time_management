@@ -1,6 +1,6 @@
 <script  lang="typescript">
 import {messages, accountService, goto, yup, Form, Input, Select, Choice, ShowError } from 'index.ts'
-
+(Form, ShowError, Input)
 let isSubmitting;
 let er = '';
 

@@ -1,5 +1,5 @@
 <script lang="typescript">
-import {onMount, onDestroy, messages, adminService, Table, Th, Tr, Pagination, ShowError, TitleBar, uPath, NotificationDisplay} from 'index.ts'
+import {onMount, onDestroy, messages, adminService, ShowError, TitleBar, uPath} from 'index.ts'
 export let menu_name="admin_menu";
 let menu_data = [];
 let er = '';
@@ -25,6 +25,7 @@ onMount(()=>{
     }
   });
 });
+(ShowError, TitleBar)
 </script>
 
 <style lang='less'>

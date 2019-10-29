@@ -37,7 +37,7 @@
     "inline-code": "^2.0.2",
     "isomorphic-ws": "^4.0.1",
     "polka": "next",
-    "rollup": "^1.25.2",
+    "rollup": "^1.26.0",
     "rollup-plugin-typescript": "^1.0.1",
     "sanctuary": "^2.0.0",
     "sirv": "^0.4.2",

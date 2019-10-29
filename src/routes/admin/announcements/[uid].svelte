@@ -20,5 +20,6 @@
     if (uid_param && !Object.keys($initialValues).length) {
         c.fetch([uid_param])
     }
+    (TitleBar, Form, Input, ShowError)
 </script>
 <template src='./_form.pug'></template>

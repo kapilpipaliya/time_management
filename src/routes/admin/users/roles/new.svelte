@@ -1,5 +1,5 @@
 <script lang="typescript">
-    import {TitleBar, Form, Input, ShowError} from 'index.js'
+    import {TitleBar, Form, Input, ShowError} from 'index.ts'
     import {CRUD, A} from './_form.ts'
 
     const c = new CRUD();
@@ -9,7 +9,7 @@
     const title = "New " + c.title_name;
     const breadcrumbs = [A.bc_home, {href: A.uPath(), name: title}];
     const showForm = true;
-
+    (TitleBar, Form, Input, ShowError)
 
 </script>
 <template src='./_form.pug'></template>

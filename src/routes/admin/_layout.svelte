@@ -4,6 +4,7 @@
   import {NotificationDisplay} from 'index.ts'
   import Sidebar from '../_components/layout/Sidebar.svelte'
   import TopMenu from '../_components/layout/TopMenu.svelte'
+  (Sidebar, TopMenu, NotificationDisplay)
   onMount(() => {
     // var hash = location.hash;
     // var target = hash.length > 0 ? hash.substr(1) : "dashboard";

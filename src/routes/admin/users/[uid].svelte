@@ -3,7 +3,7 @@
         return {uid_param: page.params.uid}
     }
 </script>
-<script lang="typescript">
+<script lang='ts'>
     import {TitleBar, Form, Input, ShowError} from 'index.ts';
     import {CRUD, A} from './_form.ts'
 
@@ -20,5 +20,6 @@
     if (uid_param && !Object.keys($initialValues).length) {
         c.fetch([uid_param])
     }
+    (TitleBar, Form, Input, ShowError)
 </script>
 <template src='./_form.pug'></template>
