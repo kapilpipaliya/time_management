@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -29,8 +29,8 @@ export class CRUD extends A.CRUDBase {
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getGroup());
+    A.adminService.getUser(this.getActivity(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getActivitiesList());
     }))
   }
 

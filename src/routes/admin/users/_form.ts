@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -29,8 +29,8 @@ export class CRUD extends A.CRUDBase {
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getPrioritiesList());
+    A.adminService.getUser(this.getReq(A.messages.UserReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getUsersList());
     }))
   }
 

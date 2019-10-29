@@ -1,6 +1,6 @@
-<script>
+<script lang="typescript">
     import {TitleBar, Form, Input, ShowError} from 'index.js'
-    import {CRUD, A} from './_form.js'
+    import {CRUD, A} from './_form.ts'
 
     const c = new CRUD();
     const er = c.er;

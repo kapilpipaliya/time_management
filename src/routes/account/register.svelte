@@ -1,5 +1,5 @@
-<script>
-import {messages, accountService, goto, yup, Form, Input, Select, Choice, ShowError } from 'index.js'
+<script  lang="typescript">
+import {messages, accountService, goto, yup, Form, Input, Select, Choice, ShowError } from 'index.ts'
 
 let isSubmitting;
 let er = '';
