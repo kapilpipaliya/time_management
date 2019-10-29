@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -7,32 +7,30 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      name: A.yup.string().required(),
-      position: A.yup.string().required(),
-      is_default: A.yup.bool().required(),
-      active: A.yup.bool().required(),
-      project: A.yup.string().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      login: A.yup.string().required(),
+      first_name: A.yup.string().required('First Name is required'),
+      last_name: A.yup.string().required('Last Name is required'),
+      mail: A.yup.string().required(),
+      password: A.yup.string().min(4),
+      confirmPassword: A.yup.string().oneOf([A.yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      name: m.getName(),
-      position: m.getPosition(),
-      is_default: m.getIsDefault(),
-      active: m.getActive(),
-      project: m.getProject(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      login: m.getLogin(),
+      first_name: m.getFirstName(),
+      last_name: m.getLastName(),
+      mail: m.getMail(),
+      password: m.getPassword(),
+      confirmPassword: m.getPassword()
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getUser(this.getActivity(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getActivitiesList());
+    A.adminService.getUser(this.getReq(A.messages.UserReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getUserList());
     }))
   }
 

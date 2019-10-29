@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -11,7 +11,6 @@ export class CRUD extends A.CRUDBase {
       position: A.yup.string().required(),
       is_default: A.yup.bool().required(),
       active: A.yup.bool().required(),
-      color: A.yup.string().required(),
       project: A.yup.string().required(),
       // created: A.yup.date().required(),
       // updated: A.yup.date().required(),
@@ -25,7 +24,6 @@ export class CRUD extends A.CRUDBase {
       position: m.getPosition(),
       is_default: m.getIsDefault(),
       active: m.getActive(),
-      color: m.getColor(),
       project: m.getProject(),
       // created: m.getCreated(),
       // updated: m.getUpdated(),
@@ -33,8 +31,8 @@ export class CRUD extends A.CRUDBase {
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getPrioritiesList());
+    A.adminService.getUser(this.getActivity(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getActivitiesList());
     }))
   }
 

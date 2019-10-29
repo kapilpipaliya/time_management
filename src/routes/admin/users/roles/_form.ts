@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 

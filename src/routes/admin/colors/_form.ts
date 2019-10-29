@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -7,30 +7,22 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      login: A.yup.string().required(),
-      first_name: A.yup.string().required('First Name is required'),
-      last_name: A.yup.string().required('Last Name is required'),
-      mail: A.yup.string().required(),
-      password: A.yup.string().min(4),
-      confirmPassword: A.yup.string().oneOf([A.yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
+      name: A.yup.string().required(),
+      hexcode: A.yup.string().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      login: m.getLogin(),
-      first_name: m.getFirstName(),
-      last_name: m.getLastName(),
-      mail: m.getMail(),
-      password: m.getPassword(),
-      confirmPassword: m.getPassword()
+      name: m.getName(),
+      hexcode: m.getHexcode(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getUser(this.getReq(A.messages.UserReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getUserList());
+    A.adminService.getColor(this.getReq(A.messages.ColorReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getColorsList());
     }))
   }
 

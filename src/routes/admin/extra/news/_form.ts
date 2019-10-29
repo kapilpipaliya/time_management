@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -7,36 +7,34 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      name: A.yup.string().required(),
-      position: A.yup.string().required(),
-      is_in_roadmap: A.yup.bool().required(),
-      is_milestone: A.yup.bool().required(),
-      is_default: A.yup.bool().required(),
-      is_standard: A.yup.bool().required(),
-      color: A.yup.string().required(),
-      attribute_groups: A.yup.string().required(),
+      project: A.yup.string().required(),
+      title: A.yup.string().required(),
+      summery: A.yup.string().required(),
       description: A.yup.string().required(),
+      author: A.yup.string().required(),
+      comments_count: A.yup.string().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      name: m.getName(),
-      position: m.getPosition(),
-      is_in_roadmap: m.getIsInRoadmap(),
-      is_milestone: m.getIsMilestone(),
-      is_default: m.getIsDefault(),
-      is_standard: m.getIsStandard(),
-      color: m.getColor(),
-      attribute_groups: m.getAttributeGroups(),
+      project: m.getProject(),
+      title: m.getTitle(),
+      summery: m.getSummery(),
       description: m.getDescription(),
+      author: m.getAuthor(),
+      comments_count: m.getCommentsCount(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getType(this.getReq(A.messages.TypeReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getTypesList());
+    A.adminService.getNews(this.getReq(A.messages.NewsReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getNewsList());
     }))
   }
 

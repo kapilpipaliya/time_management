@@ -25,7 +25,7 @@ module.exports = {
 							dev,
 							hydratable: true,
 							hotReload: false, // pending https://github.com/sveltejs/svelte/issues/2377
-							preprocess: require('svelte-preprocess')({ })
+							preprocess: require('svelte-preprocess')({typescript: {transpileOnly: true} })
 						}
 					}
 				}
@@ -59,7 +59,7 @@ module.exports = {
 							css: false,
 							generate: 'ssr',
 							dev,
-							preprocess: require('svelte-preprocess')({ })
+							preprocess: require('svelte-preprocess')({typescript: {transpileOnly: true} })
 						}
 					}
 				}

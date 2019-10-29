@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -8,7 +8,13 @@ export class CRUD extends A.CRUDBase {
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
-      users_count: A.yup.string().required(),
+      position: A.yup.string().required(),
+      is_default: A.yup.bool().required(),
+      active: A.yup.bool().required(),
+      color: A.yup.string().required(),
+      project: A.yup.string().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
 
@@ -16,13 +22,19 @@ export class CRUD extends A.CRUDBase {
     return {
       uid: m.getUid(),
       name: m.getName(),
-      users_count: m.getUsersCount(),
+      position: m.getPosition(),
+      is_default: m.getIsDefault(),
+      active: m.getActive(),
+      color: m.getColor(),
+      project: m.getProject(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getGroup());
+    A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getPrioritiesList());
     }))
   }
 

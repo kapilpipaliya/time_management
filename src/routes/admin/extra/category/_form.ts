@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -8,7 +8,10 @@ export class CRUD extends A.CRUDBase {
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
-      hexcode: A.yup.string().required(),
+      project: A.yup.string().required(),
+      assigned_to: A.yup.string().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
 
@@ -16,13 +19,16 @@ export class CRUD extends A.CRUDBase {
     return {
       uid: m.getUid(),
       name: m.getName(),
-      hexcode: m.getHexcode(),
+      project: m.getProject(),
+      assigned_to: m.getAssignedTo(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getColor(this.getReq(A.messages.ColorReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getColorsList());
+    A.adminService.getCategory(this.getReq(A.messages.CategoryReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getCategoriesList());
     }))
   }
 

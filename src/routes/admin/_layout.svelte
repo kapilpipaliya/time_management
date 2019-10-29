@@ -1,8 +1,9 @@
-<script>
+
+<script lang="typescript">
   import { onMount, onDestroy} from "svelte";
-  import {NotificationDisplay} from 'index.js'
-  import Sidebar from '../_components/layout/Sidebar'
-  import TopMenu from '../_components/layout/TopMenu'
+  import {NotificationDisplay} from 'index.ts'
+  import Sidebar from '../_components/layout/Sidebar.svelte'
+  import TopMenu from '../_components/layout/TopMenu.svelte'
   onMount(() => {
     // var hash = location.hash;
     // var target = hash.length > 0 ? hash.substr(1) : "dashboard";

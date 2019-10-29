@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -7,28 +7,36 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      text: A.yup.string().required(),
-      show_until: A.yup.date().required(),
-      active: A.yup.bool().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      name: A.yup.string().required(),
+      position: A.yup.string().required(),
+      is_in_roadmap: A.yup.bool().required(),
+      is_milestone: A.yup.bool().required(),
+      is_default: A.yup.bool().required(),
+      is_standard: A.yup.bool().required(),
+      color: A.yup.string().required(),
+      attribute_groups: A.yup.string().required(),
+      description: A.yup.string().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      text: m.getText(),
-      show_until: m.getShowUntil(),
-      active: m.getActive(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      name: m.getName(),
+      position: m.getPosition(),
+      is_in_roadmap: m.getIsInRoadmap(),
+      is_milestone: m.getIsMilestone(),
+      is_default: m.getIsDefault(),
+      is_standard: m.getIsStandard(),
+      color: m.getColor(),
+      attribute_groups: m.getAttributeGroups(),
+      description: m.getDescription(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getAnnouncement(this.getReq(A.messages.AnnouncementReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getAnnouncementsList());
+    A.adminService.getType(this.getReq(A.messages.TypeReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getTypesList());
     }))
   }
 

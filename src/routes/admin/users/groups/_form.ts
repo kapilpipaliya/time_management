@@ -1,4 +1,4 @@
-import * as A from "index.js";
+import * as A from "index.ts";
 
 export {A}
 
@@ -7,34 +7,22 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      project: A.yup.string().required(),
-      title: A.yup.string().required(),
-      summery: A.yup.string().required(),
-      description: A.yup.string().required(),
-      author: A.yup.string().required(),
-      comments_count: A.yup.string().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      name: A.yup.string().required(),
+      users_count: A.yup.string().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      project: m.getProject(),
-      title: m.getTitle(),
-      summery: m.getSummery(),
-      description: m.getDescription(),
-      author: m.getAuthor(),
-      comments_count: m.getCommentsCount(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      name: m.getName(),
+      users_count: m.getUsersCount(),
     }
   }
 
   onFetch(uids = undefined) {
-    A.adminService.getNews(this.getReq(A.messages.NewsReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getNewsList());
+    A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getGroup());
     }))
   }
 

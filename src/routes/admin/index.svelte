@@ -1,5 +1,5 @@
-<script>
-import {onMount, onDestroy, messages, adminService, Table, Th, Tr, Pagination, ShowError, TitleBar, uPath, NotificationDisplay} from 'index.js'
+<script lang="typescript">
+import {onMount, onDestroy, messages, adminService, Table, Th, Tr, Pagination, ShowError, TitleBar, uPath, NotificationDisplay} from 'index.ts'
 export let menu_name="admin_menu";
 let menu_data = [];
 let er = '';

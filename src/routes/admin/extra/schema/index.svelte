@@ -1,7 +1,8 @@
-<script>
-    import {onMount, onDestroy, messages, adminService, Table, Th, Tr, Pagination, ShowError, TitleBar, uPath, NotificationDisplay} from 'index.js'
+<script lang="typescript">
+    import {onMount, messages, adminService} from 'index.ts'
     let text = '';
     let er = '';
+
 
     onMount(()=>{
         const request = new messages.SchemaReq();
