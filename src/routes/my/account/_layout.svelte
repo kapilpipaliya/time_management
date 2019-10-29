@@ -1,10 +1,5 @@
 <script context='module'>
-import { Ws } from '../../_js/ws/ws_todo.js'
-export async function preload(page, session) {
-Ws.setupConnection(this.req, this.res)
-// export
-// export_end
-}
+
 </script>
 <script>
   import { onMount, onDestroy} from "svelte";

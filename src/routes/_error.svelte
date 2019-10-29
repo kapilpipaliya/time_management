@@ -1,15 +1,9 @@
 <script context='module'>
 //import {} from './_js/protos/time/notfound/proto/NotFoundRequest_pb.js'
 //import {} from './_js/protos/time/notfound/proto/NotFoundResponse_pb.js'
-import { Ws } from './_js/ws/ws_todo.js'
+
 import {event} from './_js/events/event.js'
-// ctx_import
-// ctx_import_end
-export async function preload(page, session) {
-Ws.setupConnection(this.req, this.res)
-// export
-// export_end
-}
+
 </script>
 <script>
 // inst
@@ -18,7 +12,6 @@ export let error;
 const dev = process.env.NODE_ENV === 'development';
 // inst_end
 </script>
-<style src='./__error-3.less' lang='less'></style>
 <template src='./__error-4.pug'></template>
 <!-- component -->
 <svelte:head>

@@ -1,0 +1,25 @@
+//- pug
+ShowError(er='{$er}')
+Add(on:click='{c.onNewClick}')
+Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
+  thead(slot='head')
+    th(sortKey='login' defaultsort='asc') Edit
+    th Delete
+    th(sortKey='login' defaultsort='asc') Login
+    th Password
+    th(sortKey='first_name' defaultsort='asc') First Name
+    th Last Name
+    th Mail
+  tbody(slot='body' let:displayData='{displayData}')
+    +each('displayData as row')
+      Tr({row})
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdDelete(on:click='{c.deleteClick(row)}')
+        td {row.getLogin()}
+        td {row.getPassword()}
+        td {row.getFirstName()}
+        td {row.getLastName()}
+        td {row.getMail()}
+Pagination({totalPages} bind:currentPage='{currentPage}')
+
+//- pug_end

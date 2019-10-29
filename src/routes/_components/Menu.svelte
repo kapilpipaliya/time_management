@@ -1,45 +1,45 @@
-<script context='module'>
-import {MenuRequest} from '../_js/protos/time/menu/proto/MenuRequest_pb.js'
-import {MenuResponse} from '../_js/protos/time/menu/proto/MenuResponse_pb.js'
-import { Ws } from '../_js/ws/ws_todo.js'
-import {event} from '../_js/events/event.js'
-// ctx_import
-// ctx_import_end
-export async function preload(page, session) {
-Ws.setupConnection(this.req, this.res)
-// export
-// export_end
-}
-</script>
 <script>
-// inst
 import { onMount, onDestroy } from "svelte";
 import { goto } from '@sapper/app'
-Ws.setupConnection()
-export let menu_name
-let menu_data = []
-onMount(()=>{
-  const menuRequest = new MenuRequest()
-  menuRequest.setName(menu_name)
-  const bytes = menuRequest.serializeBinary()
-  Ws.trigger(event.menu, 0, bytes)
+
+import * as messages from '../_js/protos/time_pb.js'
+import {AdminServiceClient} from "../_js/protos/time_grpc_web_pb.js";
+
+export let menu_name;
+let menu_data = [];
+onMount(()=> {
+  const adminService = new AdminServiceClient('http://localhost:8090', null, null);
+
+  const request = new messages.MenuRequest();
+  request.setName(menu_name);
+
+  adminService.getMenu(request, {}, function(err, response) {
+    //const response = new messages.MenuResponse;
+    if(err){
+      console.log(err)
+    } else {
+      const menu = response.getMenuList();
+      // no need to convert to json.
+      function getMenu(menu_) {
+        return menu_.map(m => {
+          return {name: m.getName(), path: m.getPath(), icon: m.getIcon(), children: getMenu(m.getChildrenList())}
+        })
+      }
+      menu_data = getMenu(menu);
+    }
+  });
+});
 
 
-  Ws.bind(event.menu, 0, 1, (bytes) => {
-    const res = MenuResponse.deserializeBinary(bytes)
-    menu_data = JSON.parse(res.getJson()).menu
-    //console.log(menu_data)
-  })
-})
-onDestroy(()=> {
-  Ws.unbind(event.menu, 0)
-})
 const onHeaderClick = (m) => () => {
-  if(!m.children) goto(m.path)
+    //const response = new messages.MenuResponse;
+    //const m = response.getMenuList()[0]
+    if(!m.children.length){
+        goto(m.path)
+    }
 }
-// inst_end
+
 </script>
-<style src='./_Menu-3.less' lang='less'></style>
+<style lang='less'></style>
 <template src='./_Menu-4.pug'></template>
-<!-- component -->
-<!-- component_end -->
+

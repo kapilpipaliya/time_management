@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/cl-editor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/f/svelte-form" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/f/svelte-forms-lib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/f/sveltejs-forms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/simple-svelte-autocomplete" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-data-grid" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-datatable" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-dbmonster" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-notifications" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-scrollspy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-select" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-swipe" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-table" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-table(simple)" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/svelte-tabs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/sveltejs-forms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/sveltejs-forms_git" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/sveltejs-tippy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/routes/_components/yup" vcs="Git" />
+  </component>
+</project>

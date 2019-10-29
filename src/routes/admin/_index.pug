@@ -1,0 +1,28 @@
+//- pug
+TitleBar(title="Overview" breadcrumbs='{breadcrumbs}')
+ShowError(er='{er}')
+.m-3
+  .row.mt-2
+    +each('menu_data as m')
+      +if('m.name != "Overview"')
+        .cell-lg-3.cell-sm-6.mt-4
+          a.icon-box(href="{m.path}")
+            .icon.bg-cyan.fg-white
+              span(class='{m.icon}')
+            .content.p-4
+              .text-up55555555per {m.name}
+              .text-upper.text-bold.text-lead 
+
+| Extra Links
+hr
+a(href='/admin/extra/activity') activity
+br
+a(href='/admin/extra/category') category
+br
+a(href='/admin/extra/news') news
+br
+a(href='/admin/extra/priority') priority
+br
+a(href='/admin/extra/role') role
+br
+//- pug_end

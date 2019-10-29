@@ -1,0 +1,37 @@
+//- pug
+.h-vh-100.d-flex.flex-justify-center.flex-align-center
+  .login-box
+    Form(schema='{schema}'  on:submit='{handleSubmit}' let:isSubmitting let:isValid)
+      img.place-right.mt-4-minus.mr-5-minus(alt='image' src='images/pandora/images/p-120x120.png')
+      h1.mb-0 Register
+      .text-muted.mb-4 Register a new membership
+      .form-group
+        Input( name='name' icon='mif-user' placeholder='Full name' )
+        span.invalid_feedback Please enter a full name
+      .form-group
+        Input( name='username' icon='mif-envelop' placeholder='User name')
+        span.invalid_feedback Please enter a valid email address or username
+      .form-group
+        Input( name='password' type='password' icon='mif-key' placeholder='Password')
+        span.invalid_feedback Please enter a password
+        Input( name='confirmPassword' type='password' icon='mif-checkmark' placeholder='Retype password')
+        span.invalid_feedback Please enter a password
+      .form-group.d-flex.flex-align-center.flex-justify-between
+        input(type='checkbox' data-role='checkbox' data-caption="I agree to the <a href='#'>terms</a>")
+        button.button.primary(type='submit' disabled='{!isValid}') Register
+      ShowError(er='{er}')
+      .text-center.m-4 - OR -
+      .form-group
+        button.image-button.w-100.mt-1.bg-facebook.fg-white(type='button')
+          span.mif-facebook.icon
+          span.caption Sign Up using Facebook
+        button.image-button.w-100.mt-1.bg-github.fg-white(type='button')
+          span.mif-github.icon
+          span.caption Sign Up using GitHub
+        button.image-button.w-100.mt-1.bg-gitlab.fg-white(type='button')
+          span.mif-gitlab.icon
+          span.caption Sign Up using GitLab
+      .form-group.border-top.bd-default.pt-2
+        a.d-block(href='\#;') I already have a membership
+
+//- pug_end

@@ -1,0 +1,31 @@
+//- pug
+ShowError(er='{$er}')
+Add(on:click='{c.onNewClick}')
+Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
+  thead(slot='head')
+    th Edit
+    th Uid
+    th Name
+    th Is In Roadmap
+    th Is Default
+    th Is Standard
+    th Color
+    th AttributeGroups
+    th Description
+  tbody(slot='body' let:displayData='{displayData}')
+    +each('displayData as row')
+      Tr({row})
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdDelete(on:click='{c.deleteClick(row)}')
+        td {row.getUid()}
+        td {row.getName()}
+        td {row.getIsInRoadmap()}
+        td {row.getIsMilestone()}
+        td {row.getIsDefault()}
+        td {row.getIsStandard()}
+        td {row.getColor()}
+        td {row.getAttributeGroups()}
+        td {row.getDescription()}
+Pagination({totalPages} bind:currentPage='{currentPage}')
+
+//- pug_end

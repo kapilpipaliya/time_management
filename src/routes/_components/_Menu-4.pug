@@ -4,7 +4,7 @@ ul#side-menu.navview-menu.mt-4
   li.item-header MAIN NAVIGATION
   +each('menu_data as m')
     li
-      a(href="{m.children ? null : m.path}" class:dropdown-toggle='{!!m.children}' on:click="{onHeaderClick(m)}")
+      a(href="{m.path}" class:dropdown-toggle='{m.children.length}' on:click="{onHeaderClick(m)}")
         span.icon
           span(class='{m.icon}')
         span.caption {m.name}
@@ -12,7 +12,7 @@ ul#side-menu.navview-menu.mt-4
         +if('m.children && m.children.length > 0')
           +each('m.children as c')
             li
-              a(href="{c.children ? null : c.path}" class:dropdown-toggle='{!!c.children}')
+              a(href="{c.path}" class:dropdown-toggle='{c.children.length}')
                 span.icon
                   span(class='{c.icon}')
                 span.caption {c.name}

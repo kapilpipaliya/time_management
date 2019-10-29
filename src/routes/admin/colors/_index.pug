@@ -1,0 +1,18 @@
+//- pug
+ShowError(er='{$er}')
+Add(on:click='{c.onNewClick}')
+Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
+  thead(slot='head')
+    th(sortKey='login' defaultsort='asc') Edit
+    th(sortKey='login' defaultsort='asc') Name
+    th(sortKey='first_name' defaultsort='asc') Hex Code
+  tbody(slot='body' let:displayData='{displayData}')
+    +each('displayData as row')
+      Tr({row})
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdDelete(on:click='{c.deleteClick(row)}')
+        td {row.getName()}
+        td {row.getHexcode()}
+Pagination({totalPages} bind:currentPage='{currentPage}')
+
+//- pug_end

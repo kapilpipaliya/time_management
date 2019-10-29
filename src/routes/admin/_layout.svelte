@@ -1,12 +1,6 @@
-
-<script context='module'>
-import { Ws } from '../_js/ws/ws_todo.js'
-export async function preload(page, session) {
-Ws.setupConnection(this.req, this.res)
-}
-</script>
 <script>
   import { onMount, onDestroy} from "svelte";
+  import {NotificationDisplay} from 'index.js'
   import Sidebar from '../_components/layout/Sidebar'
   import TopMenu from '../_components/layout/TopMenu'
   onMount(() => {
@@ -24,5 +18,5 @@ div.expanded-xl(data-role='navview' data-toggle='#paneToggle' data-expanded='xl'
     TopMenu
     #content-wrapper.content-inner.h-100(style='overflow-y: auto')
       slot
-
+NotificationDisplay
 </template>
