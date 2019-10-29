@@ -1,4 +1,4 @@
-import * as A from "index.ts";
+import * as A from 'index.ts';
 
 export {A}
 
@@ -7,53 +7,53 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      login: A.yup.string().required(),
-      first_name: A.yup.string().required('First Name is required'),
-      last_name: A.yup.string().required('Last Name is required'),
-      mail: A.yup.string().required(),
-      password: A.yup.string().min(4),
-      confirmPassword: A.yup.string().oneOf([A.yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
+      name: A.yup.string().required(),
+      // position: A.yup.string().required(),
+      assignable: A.yup.bool(),
+      // permissions:{permissions}, // fix
     });
+  }
+
+  newInitialValues() {
+    return {
+      assignable: false,
+    }
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      login: m.getLogin(),
-      first_name: m.getFirstName(),
-      last_name: m.getLastName(),
-      mail: m.getMail(),
-      password: m.getPassword(),
-      confirmPassword: m.getPassword()
+      name: m.getName(),
+      // position: m.getPosition(),
+      assignable: m.getAssignable(),
+      // permissions: m.getPermissions(), //fix
     }
   }
 
   onFetch(uids = undefined) {
     A.adminService.getRole(this.getReq(A.messages.RoleReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getRolesList());
+      this.setData(uids, res.getRoleList());
     }))
   }
 
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.RoleMutationReq();
+    const m = new A.messages.Role();
+    m.setUid(values.uid);
+    m.setName(values.name);
+    // m.setPosition(values.position);
+    m.setAssignable(values.assignable);
+    // m.setPermissions(values.permissions);
+    req.setRole(m);
+    A.adminService.mutateRole(req, this.getMeta(),
+      this.muCallback('New Role Created Successfully', '/', setSubmitting));
   }
 
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.RoleDeleteReq();
+    const m_ = new A.messages.Role();
+    m_.setUid(m.getUid());
+    req.setRole(m_);
+    A.adminService.deleteRole(req, this.getMeta(), this.delCallback('Role Deleted Successfully'));
   }
 }

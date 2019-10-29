@@ -16,6 +16,10 @@ export class CRUD extends A.CRUDBase {
     });
   }
 
+  newInitialValues() {
+    return {}
+  }
+
   toInitialValues(m) {
     return {
       uid: m.getUid(),

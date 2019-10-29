@@ -16,7 +16,11 @@
   const { touchField, setValue, values, errors, touched } = getContext(FORM);
 
   function onChange(event) {
-    setValue(name, event.target.value);
+    if(type == 'checkbox') {
+      setValue(name, event.target.checked)
+    } else {
+        setValue(name, event.target.value);
+    }
   }
 
   function onBlur() {
@@ -40,6 +44,7 @@
       {type}
       {placeholder}
       value={get($values, name)}
+      checked={type=='checkbox' ?  get($values, name) : null}
       on:blur={onBlur}
       on:change={onChange} />
   {/if}

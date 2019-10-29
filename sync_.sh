@@ -1,6 +1,8 @@
 mypath=/home/kapili3/k/svelte/sapper/time_management/src/routes
 
-for d in _form.js _form.pug _index.pug index.svelte new.svelte [uid].svelte
+#_form.js _form.pug _index.pug
+
+for d in index.svelte new.svelte [uid].svelte
 do
   rsync $mypath/admin/users/$d $mypath/admin/activities/$d
   rsync $mypath/admin/users/$d $mypath/admin/announcements/$d

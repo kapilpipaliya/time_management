@@ -9,6 +9,7 @@
     const title = "New " + c.title_name;
     const breadcrumbs = [A.bc_home, {href: A.uPath(), name: title}];
     const showForm = true;
+    $initialValues = c.newInitialValues();
     (TitleBar, Form, Input, ShowError)
 
 </script>
