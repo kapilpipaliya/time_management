@@ -7,24 +7,30 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      login: A.yup.string().required(),
-      first_name: A.yup.string().required('First Name is required'),
-      last_name: A.yup.string().required('Last Name is required'),
-      mail: A.yup.string().required(),
-      password: A.yup.string().min(4),
-      confirmPassword: A.yup.string().oneOf([A.yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
+      name: A.yup.string().required(),
+      position: A.yup.string().required(),
+      is_in_roadmap: A.yup.bool().required(),
+      is_milestone: A.yup.bool().required(),
+      is_default: A.yup.bool().required(),
+      is_standard: A.yup.bool().required(),
+      color: A.yup.string().required(),
+      attribute_groups: A.yup.string().required(),
+      description: A.yup.string().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      login: m.getLogin(),
-      first_name: m.getFirstName(),
-      last_name: m.getLastName(),
-      mail: m.getMail(),
-      password: m.getPassword(),
-      confirmPassword: m.getPassword()
+      name: m.getName(),
+      position: m.getPosition(),
+      is_in_roadmap: m.getIsInRoadmap(),
+      is_milestone: m.getIsMilestone(),
+      is_default: m.getIsDefault(),
+      is_standard: m.getIsStandard(),
+      color: m.getColor(),
+      attribute_groups: m.getAttributeGroups(),
+      description: m.getDescription(),
     }
   }
 

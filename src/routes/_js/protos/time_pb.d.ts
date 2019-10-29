@@ -285,10 +285,10 @@ export class UserRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearUsersList(): void;
-  getUsersList(): Array<User>;
-  setUsersList(value: Array<User>): void;
-  addUsers(value?: User, index?: number): User;
+  clearUserList(): void;
+  getUserList(): Array<User>;
+  setUserList(value: Array<User>): void;
+  addUser(value?: User, index?: number): User;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserRes.AsObject;
@@ -304,7 +304,7 @@ export namespace UserRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    usersList: Array<User.AsObject>,
+    userList: Array<User.AsObject>,
   }
 }
 
@@ -409,10 +409,10 @@ export class GroupRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearGroupsList(): void;
-  getGroupsList(): Array<Group>;
-  setGroupsList(value: Array<Group>): void;
-  addGroups(value?: Group, index?: number): Group;
+  clearGroupList(): void;
+  getGroupList(): Array<Group>;
+  setGroupList(value: Array<Group>): void;
+  addGroup(value?: Group, index?: number): Group;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GroupRes.AsObject;
@@ -428,7 +428,7 @@ export namespace GroupRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    groupsList: Array<Group.AsObject>,
+    groupList: Array<Group.AsObject>,
   }
 }
 
@@ -533,10 +533,10 @@ export class ColorRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearColorsList(): void;
-  getColorsList(): Array<Color>;
-  setColorsList(value: Array<Color>): void;
-  addColors(value?: Color, index?: number): Color;
+  clearColorList(): void;
+  getColorList(): Array<Color>;
+  setColorList(value: Array<Color>): void;
+  addColor(value?: Color, index?: number): Color;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ColorRes.AsObject;
@@ -552,7 +552,7 @@ export namespace ColorRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    colorsList: Array<Color.AsObject>,
+    colorList: Array<Color.AsObject>,
   }
 }
 
@@ -685,10 +685,10 @@ export class TypeRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearTypesList(): void;
-  getTypesList(): Array<Type>;
-  setTypesList(value: Array<Type>): void;
-  addTypes(value?: Type, index?: number): Type;
+  clearTypeList(): void;
+  getTypeList(): Array<Type>;
+  setTypeList(value: Array<Type>): void;
+  addType(value?: Type, index?: number): Type;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): TypeRes.AsObject;
@@ -704,7 +704,7 @@ export namespace TypeRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    typesList: Array<Type.AsObject>,
+    typeList: Array<Type.AsObject>,
   }
 }
 
@@ -969,10 +969,10 @@ export class ActivityRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearActivitiesList(): void;
-  getActivitiesList(): Array<Activity>;
-  setActivitiesList(value: Array<Activity>): void;
-  addActivities(value?: Activity, index?: number): Activity;
+  clearActivityList(): void;
+  getActivityList(): Array<Activity>;
+  setActivityList(value: Array<Activity>): void;
+  addActivity(value?: Activity, index?: number): Activity;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ActivityRes.AsObject;
@@ -988,7 +988,7 @@ export namespace ActivityRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    activitiesList: Array<Activity.AsObject>,
+    activityList: Array<Activity.AsObject>,
   }
 }
 
@@ -1113,10 +1113,10 @@ export class PriorityRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearPrioritiesList(): void;
-  getPrioritiesList(): Array<Priority>;
-  setPrioritiesList(value: Array<Priority>): void;
-  addPriorities(value?: Priority, index?: number): Priority;
+  clearPriorityList(): void;
+  getPriorityList(): Array<Priority>;
+  setPriorityList(value: Array<Priority>): void;
+  addPriority(value?: Priority, index?: number): Priority;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): PriorityRes.AsObject;
@@ -1132,7 +1132,7 @@ export namespace PriorityRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    prioritiesList: Array<Priority.AsObject>,
+    priorityList: Array<Priority.AsObject>,
   }
 }
 
@@ -1251,10 +1251,10 @@ export class CategoryRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearCategoriesList(): void;
-  getCategoriesList(): Array<Category>;
-  setCategoriesList(value: Array<Category>): void;
-  addCategories(value?: Category, index?: number): Category;
+  clearCategoryList(): void;
+  getCategoryList(): Array<Category>;
+  setCategoryList(value: Array<Category>): void;
+  addCategory(value?: Category, index?: number): Category;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CategoryRes.AsObject;
@@ -1270,7 +1270,7 @@ export namespace CategoryRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    categoriesList: Array<Category.AsObject>,
+    categoryList: Array<Category.AsObject>,
   }
 }
 
@@ -1379,10 +1379,10 @@ export class RoleRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearRolesList(): void;
-  getRolesList(): Array<Role>;
-  setRolesList(value: Array<Role>): void;
-  addRoles(value?: Role, index?: number): Role;
+  clearRoleList(): void;
+  getRoleList(): Array<Role>;
+  setRoleList(value: Array<Role>): void;
+  addRole(value?: Role, index?: number): Role;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RoleRes.AsObject;
@@ -1398,7 +1398,7 @@ export namespace RoleRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    rolesList: Array<Role.AsObject>,
+    roleList: Array<Role.AsObject>,
   }
 }
 
@@ -1507,10 +1507,10 @@ export class AnnouncementRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
-  clearAnnouncementsList(): void;
-  getAnnouncementsList(): Array<Announcement>;
-  setAnnouncementsList(value: Array<Announcement>): void;
-  addAnnouncements(value?: Announcement, index?: number): Announcement;
+  clearAnnouncementList(): void;
+  getAnnouncementList(): Array<Announcement>;
+  setAnnouncementList(value: Array<Announcement>): void;
+  addAnnouncement(value?: Announcement, index?: number): Announcement;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AnnouncementRes.AsObject;
@@ -1526,7 +1526,7 @@ export namespace AnnouncementRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
-    announcementsList: Array<Announcement.AsObject>,
+    announcementList: Array<Announcement.AsObject>,
   }
 }
 
@@ -1731,6 +1731,50 @@ export class Project extends jspb.Message {
 
 export namespace Project {
   export type AsObject = {
+  }
+}
+
+export class SchemaReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SchemaReq.AsObject;
+  static toObject(includeInstance: boolean, msg: SchemaReq): SchemaReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SchemaReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SchemaReq;
+  static deserializeBinaryFromReader(message: SchemaReq, reader: jspb.BinaryReader): SchemaReq;
+}
+
+export namespace SchemaReq {
+  export type AsObject = {
+  }
+}
+
+export class SchemaRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getText(): string;
+  setText(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SchemaRes.AsObject;
+  static toObject(includeInstance: boolean, msg: SchemaRes): SchemaRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SchemaRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SchemaRes;
+  static deserializeBinaryFromReader(message: SchemaRes, reader: jspb.BinaryReader): SchemaRes;
+}
+
+export namespace SchemaRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    text: string,
   }
 }
 

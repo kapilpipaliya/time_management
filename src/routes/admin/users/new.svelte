@@ -1,4 +1,4 @@
-<script>
+<script  lang="typescript">
     import {TitleBar, Form, Input, ShowError} from 'index.js'
     import {CRUD, A} from './_form.js'
 

@@ -414,6 +414,28 @@ function deserialize_todo_RoleRes(buffer_arg) {
   return time_pb.RoleRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_todo_SchemaReq(arg) {
+  if (!(arg instanceof time_pb.SchemaReq)) {
+    throw new Error('Expected argument of type todo.SchemaReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_SchemaReq(buffer_arg) {
+  return time_pb.SchemaReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_SchemaRes(arg) {
+  if (!(arg instanceof time_pb.SchemaRes)) {
+    throw new Error('Expected argument of type todo.SchemaRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_SchemaRes(buffer_arg) {
+  return time_pb.SchemaRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_todo_StatusDeleteReq(arg) {
   if (!(arg instanceof time_pb.StatusDeleteReq)) {
     throw new Error('Expected argument of type todo.StatusDeleteReq');
@@ -936,6 +958,17 @@ var AdminServiceService = exports.AdminServiceService = {
     requestDeserialize: deserialize_todo_NewsDeleteReq,
     responseSerialize: serialize_todo_CallStatus,
     responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getSchema: {
+    path: '/todo.AdminService/getSchema',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.SchemaReq,
+    responseType: time_pb.SchemaRes,
+    requestSerialize: serialize_todo_SchemaReq,
+    requestDeserialize: deserialize_todo_SchemaReq,
+    responseSerialize: serialize_todo_SchemaRes,
+    responseDeserialize: deserialize_todo_SchemaRes,
   },
 };
 

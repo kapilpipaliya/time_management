@@ -30,7 +30,7 @@ export class CRUD extends A.CRUDBase {
 
   onFetch(uids = undefined) {
     A.adminService.getUser(this.getReq(A.messages.UserReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getUsersList());
+      this.setData(uids, res.getUserList());
     }))
   }
 

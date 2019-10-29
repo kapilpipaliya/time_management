@@ -7,24 +7,22 @@ export class CRUD extends A.CRUDBase {
     super();
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      login: A.yup.string().required(),
-      first_name: A.yup.string().required('First Name is required'),
-      last_name: A.yup.string().required('Last Name is required'),
-      mail: A.yup.string().required(),
-      password: A.yup.string().min(4),
-      confirmPassword: A.yup.string().oneOf([A.yup.ref('password'), null], "Passwords don't match").required('Confirm Password is required'),
+      text: A.yup.string().required(),
+      show_until: A.yup.date().required(),
+      active: A.yup.bool().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
 
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      login: m.getLogin(),
-      first_name: m.getFirstName(),
-      last_name: m.getLastName(),
-      mail: m.getMail(),
-      password: m.getPassword(),
-      confirmPassword: m.getPassword()
+      text: m.getText(),
+      show_until: m.getShowUntil(),
+      active: m.getActive(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
 

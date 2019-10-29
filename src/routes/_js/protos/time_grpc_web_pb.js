@@ -2920,5 +2920,85 @@ proto.todo.AdminServicePromiseClient.prototype.deleteNews =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.SchemaReq,
+ *   !proto.todo.SchemaRes>}
+ */
+const methodDescriptor_AdminService_getSchema = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getSchema',
+  grpc.web.MethodType.UNARY,
+  proto.todo.SchemaReq,
+  proto.todo.SchemaRes,
+  /**
+   * @param {!proto.todo.SchemaReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.SchemaRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.SchemaReq,
+ *   !proto.todo.SchemaRes>}
+ */
+const methodInfo_AdminService_getSchema = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.SchemaRes,
+  /**
+   * @param {!proto.todo.SchemaReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.SchemaRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.SchemaReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.SchemaRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.SchemaRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getSchema =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getSchema',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getSchema,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.SchemaReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.SchemaRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getSchema =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getSchema',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getSchema);
+};
+
+
 module.exports = proto.todo;
 
