@@ -50,7 +50,7 @@ export class CRUD extends A.CRUDBase {
     req.setUser(u);
 
     A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+      this.muCallback(values.uid, 'User', '/admin/users', setSubmitting));
   }
 
   onDelete(m) {

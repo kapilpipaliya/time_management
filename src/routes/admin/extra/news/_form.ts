@@ -1,10 +1,9 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "News";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       project: A.yup.string().required(),
@@ -13,11 +12,14 @@ export class CRUD extends A.CRUDBase {
       description: A.yup.string().required(),
       author: A.yup.string().required(),
       comments_count: A.yup.string().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      created: A.yup.date().required(),
+      updated: A.yup.date().required(),
     });
   }
-
+  newInitialValues() {
+    return {
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
@@ -27,37 +29,36 @@ export class CRUD extends A.CRUDBase {
       description: m.getDescription(),
       author: m.getAuthor(),
       comments_count: m.getCommentsCount(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      created: m.getCreated(),
+      updated: m.getUpdated(),
     }
   }
-
   onFetch(uids = undefined) {
     A.adminService.getNews(this.getReq(A.messages.NewsReq, uids), this.getMeta(), this.getCallback(res => {
       this.setData(uids, res.getNewsList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.NewsMutationReq();
+    const m = new A.messages.News();
+    m.setUid(values.uid);
+    m.setProject(values.project);
+    m.setTitle(values.title);
+    m.setSummery(values.summery);
+    m.setDescription(values.description);
+    m.setAuthor(values.author);
+    m.setCommentsCount(values.comments_count);
+    m.setCreated(values.created);
+    m.setUpdated(values.updated);
+    req.setNews(m);
+    A.adminService.mutateNews(req, this.getMeta(),
+      this.muCallback(values.uid, 'News', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.NewsDeleteReq();
+    const m_ = new A.messages.News();
+    m_.setUid(m.getUid());
+    req.setNews(m_);
+    A.adminService.deleteNews(req, this.getMeta(), this.delCallback('News Deleted Successfully'));
   }
 }

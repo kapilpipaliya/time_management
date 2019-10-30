@@ -1,27 +1,30 @@
-//- pug
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
 Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
   thead(slot='head')
     th Edit
+    th Delete
     th Name
+    th Position
     th Is Default
     th Is Closed
     th Color
     th Default Done Ratio
     th Is Readonly
+    th Created
+    th Updated
   tbody(slot='body' let:displayData='{displayData}')
     +each('displayData as row')
       Tr({row})
-        td
-          a(href='/admin/users/' + '{row.getUid()}') Edit
-        td {row.getUid()}
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdDelete(on:click='{c.deleteClick(row)}')
         td {row.getName()}
+        td {row.getPosition()}
         td {row.getIsDefault()}
         td {row.getIsClosed()}
         td {row.getColor()}
         td {row.getDefaultDoneRatio()}
         td {row.getIsReadonly()}
+        td {row.getCreated()}
+        td {row.getUpdated()}
 Pagination({totalPages} bind:currentPage='{currentPage}')
-
-//- pug_end

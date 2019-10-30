@@ -4,8 +4,9 @@ Add(on:click='{c.onNewClick}')
 Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
   thead(slot='head')
     th Edit
+    th Delete
     th Name
-    th Users
+    th Users Count
   tbody(slot='body' let:displayData='{displayData}')
     +each('displayData as row')
       Tr({row})
@@ -14,5 +15,4 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
         td {row.getName()}
         td {row.getUsersCount()}
 Pagination({totalPages} bind:currentPage='{currentPage}')
-
 //- pug_end

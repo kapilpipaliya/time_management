@@ -1,15 +1,17 @@
-//- pug
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
 Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
   thead(slot='head')
     th Edit
+    th Delete
     th Project
     th Title
     th Summery
     th Description
     th Author
-    th Comments count
+    th Comments Count
+    th Created
+    th Updated
   tbody(slot='body' let:displayData='{displayData}')
     +each('displayData as row')
       Tr({row})
@@ -21,6 +23,6 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
         td {row.getDescription()}
         td {row.getAuthor()}
         td {row.getCommentsCount()}
+        td {row.getCreated()}
+        td {row.getUpdated()}
 Pagination({totalPages} bind:currentPage='{currentPage}')
-
-//- pug_end

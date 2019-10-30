@@ -1,10 +1,9 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Activity";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
@@ -12,11 +11,16 @@ export class CRUD extends A.CRUDBase {
       is_default: A.yup.bool().required(),
       active: A.yup.bool().required(),
       project: A.yup.string().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      created: A.yup.date().required(),
+      updated: A.yup.date().required(),
     });
   }
-
+  newInitialValues() {
+    return {
+      is_default: false,
+      active: false,
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
@@ -25,37 +29,35 @@ export class CRUD extends A.CRUDBase {
       is_default: m.getIsDefault(),
       active: m.getActive(),
       project: m.getProject(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      created: m.getCreated(),
+      updated: m.getUpdated(),
     }
   }
-
   onFetch(uids = undefined) {
-    A.adminService.getUser(this.getActivity(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getActivitiesList());
+    A.adminService.getActivity(this.getReq(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getActivityList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.ActivityMutationReq();
+    const m = new A.messages.Activity();
+    m.setUid(values.uid);
+    m.setName(values.name);
+    m.setPosition(values.position);
+    m.setIsDefault(values.is_default);
+    m.setActive(values.active);
+    m.setProject(values.project);
+    m.setCreated(values.created);
+    m.setUpdated(values.updated);
+    req.setActivity(m);
+    A.adminService.mutateActivity(req, this.getMeta(),
+      this.muCallback(values.uid, 'Activity', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.ActivityDeleteReq();
+    const m_ = new A.messages.Activity();
+    m_.setUid(m.getUid());
+    req.setActivity(m_);
+    A.adminService.deleteActivity(req, this.getMeta(), this.delCallback('Activity Deleted Successfully'));
   }
 }

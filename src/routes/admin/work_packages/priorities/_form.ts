@@ -1,10 +1,9 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Priority";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
@@ -13,11 +12,16 @@ export class CRUD extends A.CRUDBase {
       active: A.yup.bool().required(),
       color: A.yup.string().required(),
       project: A.yup.string().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      created: A.yup.date().required(),
+      updated: A.yup.date().required(),
     });
   }
-
+  newInitialValues() {
+    return {
+      is_default: false,
+      active: false,
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
@@ -27,37 +31,36 @@ export class CRUD extends A.CRUDBase {
       active: m.getActive(),
       color: m.getColor(),
       project: m.getProject(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      created: m.getCreated(),
+      updated: m.getUpdated(),
     }
   }
-
   onFetch(uids = undefined) {
     A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getPrioritiesList());
+      this.setData(uids, res.getPriorityList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.PriorityMutationReq();
+    const m = new A.messages.Priority();
+    m.setUid(values.uid);
+    m.setName(values.name);
+    m.setPosition(values.position);
+    m.setIsDefault(values.is_default);
+    m.setActive(values.active);
+    m.setColor(values.color);
+    m.setProject(values.project);
+    m.setCreated(values.created);
+    m.setUpdated(values.updated);
+    req.setPriority(m);
+    A.adminService.mutatePriority(req, this.getMeta(),
+      this.muCallback(values.uid, 'Priority', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.PriorityDeleteReq();
+    const m_ = new A.messages.Priority();
+    m_.setUid(m.getUid());
+    req.setPriority(m_);
+    A.adminService.deletePriority(req, this.getMeta(), this.delCallback('Priority Deleted Successfully'));
   }
 }

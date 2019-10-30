@@ -1,51 +1,46 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Group";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
-      users_count: A.yup.string().required(),
+      //users_count: A.yup.string(),
     });
   }
-
+  newInitialValues() {
+    return {
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
       name: m.getName(),
-      users_count: m.getUsersCount(),
+      //users_count: m.getUsersCount(),
     }
   }
-
   onFetch(uids = undefined) {
     A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getGroup());
+      this.setData(uids, res.getGroupList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.GroupMutationReq();
+    const m = new A.messages.Group();
+    m.setUid(values.uid);
+    m.setName(values.name);
+    //m.setUsersCount(values.users_count);
+    req.setGroup(m);
+    A.adminService.mutateGroup(req, this.getMeta(),
+      this.muCallback(values.uid, 'Group', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.GroupDeleteReq();
+    const m_ = new A.messages.Group();
+    m_.setUid(m.getUid());
+    req.setGroup(m_);
+    A.adminService.deleteGroup(req, this.getMeta(), this.delCallback('Group Deleted Successfully'));
   }
 }

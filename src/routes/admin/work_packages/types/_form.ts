@@ -1,10 +1,9 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Type";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
@@ -18,7 +17,14 @@ export class CRUD extends A.CRUDBase {
       description: A.yup.string().required(),
     });
   }
-
+  newInitialValues() {
+    return {
+      is_in_roadmap: false,
+      is_milestone: false,
+      is_default: false,
+      is_standard: false,
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
@@ -33,33 +39,33 @@ export class CRUD extends A.CRUDBase {
       description: m.getDescription(),
     }
   }
-
   onFetch(uids = undefined) {
     A.adminService.getType(this.getReq(A.messages.TypeReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getTypesList());
+      this.setData(uids, res.getTypeList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.TypeMutationReq();
+    const m = new A.messages.Type();
+    m.setUid(values.uid);
+    m.setName(values.name);
+    m.setPosition(values.position);
+    m.setIsInRoadmap(values.is_in_roadmap);
+    m.setIsMilestone(values.is_milestone);
+    m.setIsDefault(values.is_default);
+    m.setIsStandard(values.is_standard);
+    m.setColor(values.color);
+    m.setAttributeGroups(values.attribute_groups);
+    m.setDescription(values.description);
+    req.setType(m);
+    A.adminService.mutateType(req, this.getMeta(),
+      this.muCallback(values.uid, 'Type', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.TypeDeleteReq();
+    const m_ = new A.messages.Type();
+    m_.setUid(m.getUid());
+    req.setType(m_);
+    A.adminService.deleteType(req, this.getMeta(), this.delCallback('Type Deleted Successfully'));
   }
 }

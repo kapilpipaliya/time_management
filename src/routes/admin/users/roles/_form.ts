@@ -5,6 +5,7 @@ export {A}
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Role";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       name: A.yup.string().required(),
@@ -46,7 +47,7 @@ export class CRUD extends A.CRUDBase {
     // m.setPermissions(values.permissions);
     req.setRole(m);
     A.adminService.mutateRole(req, this.getMeta(),
-      this.muCallback('New Role Created Successfully', '/', setSubmitting));
+      this.muCallback(values.uid, 'Role', '/', setSubmitting));
   }
 
   onDelete(m) {

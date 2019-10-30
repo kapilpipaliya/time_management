@@ -1,4 +1,4 @@
-TitleBar(title="{title}" breadcrumbs='{breadcrumbs}')
+TitleBar(title='{title}' breadcrumbs='{breadcrumbs}')
 +if('showForm')
   .m-3
     .row
@@ -8,25 +8,12 @@ TitleBar(title="{title}" breadcrumbs='{breadcrumbs}')
             .cell-md-12.d-none
               label Uid
               Input(type='text' name='uid' )
-            .cell-md-12
-              label Login
-              Input(type='text' name='login' )
             .cell-md-6
-              label First name
-              Input(type='text' name='first_name' )
-            .cell-md-6
-              label Last name
-              Input(type='text' name='last_name' )
-          .row.mb-2
-            .cell-md-6
-              label E-mail
-              Input(name='mail'  type='email' placeholder='E-mail')
-            .cell-md-3
-              label Password
-              Input(name='password' type='password' placeholder='Password' )
-            .cell-md-3
-              label Confirm Password
-              Input(name='confirmPassword' type='password' placeholder='Confirm Password')
+              label Name
+              Input(type='text' name='name' )
+            //.cell-md-6
+            //  label Users Count
+            //  Input(type='number' name='users_count' )
           button.button.primary(type='submit' disabled='{isSubmitting || !isValid}') Submit
           button.button.secondary.ml-1(type='button' on:click='{c.goBack}') Cancel
           ShowError(er='{$er}')

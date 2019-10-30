@@ -28,6 +28,34 @@ export namespace CallStatus {
   }
 }
 
+export class Paginate extends jspb.Message {
+  getCount(): number;
+  setCount(value: number): void;
+
+  getFirst(): number;
+  setFirst(value: number): void;
+
+  getOffset(): number;
+  setOffset(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Paginate.AsObject;
+  static toObject(includeInstance: boolean, msg: Paginate): Paginate.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: Paginate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Paginate;
+  static deserializeBinaryFromReader(message: Paginate, reader: jspb.BinaryReader): Paginate;
+}
+
+export namespace Paginate {
+  export type AsObject = {
+    count: number,
+    first: number,
+    offset: number,
+  }
+}
+
 export class Uids extends jspb.Message {
   clearUidsList(): void;
   getUidsList(): Array<string>;
@@ -505,6 +533,11 @@ export namespace Color {
 }
 
 export class ColorReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -522,6 +555,7 @@ export class ColorReq extends jspb.Message {
 
 export namespace ColorReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -532,6 +566,11 @@ export class ColorRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearColorList(): void;
   getColorList(): Array<Color>;
@@ -552,6 +591,7 @@ export namespace ColorRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     colorList: Array<Color.AsObject>,
   }
 }

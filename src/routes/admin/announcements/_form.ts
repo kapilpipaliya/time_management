@@ -1,57 +1,56 @@
-import * as A from "index.ts";
-
+import * as A from 'index.ts';
 export {A}
-
 export class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "Announcement";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       text: A.yup.string().required(),
       show_until: A.yup.date().required(),
       active: A.yup.bool().required(),
-      // created: A.yup.date().required(),
-      // updated: A.yup.date().required(),
+      created: A.yup.date().required(),
+      updated: A.yup.date().required(),
     });
   }
-
+  newInitialValues() {
+    return {
+      active: false,
+    }
+  }
   toInitialValues(m) {
     return {
       uid: m.getUid(),
       text: m.getText(),
       show_until: m.getShowUntil(),
       active: m.getActive(),
-      // created: m.getCreated(),
-      // updated: m.getUpdated(),
+      created: m.getCreated(),
+      updated: m.getUpdated(),
     }
   }
-
   onFetch(uids = undefined) {
     A.adminService.getAnnouncement(this.getReq(A.messages.AnnouncementReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getAnnouncementsList());
+      this.setData(uids, res.getAnnouncementList());
     }))
   }
-
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
-
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback('New User Created Successfully', '/admin/users', setSubmitting));
+    const req = new A.messages.AnnouncementMutationReq();
+    const m = new A.messages.Announcement();
+    m.setUid(values.uid);
+    m.setText(values.text);
+    m.setShowUntil(values.show_until);
+    m.setActive(values.active);
+    m.setCreated(values.created);
+    m.setUpdated(values.updated);
+    req.setAnnouncement(m);
+    A.adminService.mutateAnnouncement(req, this.getMeta(),
+      this.muCallback(values.uid, 'Announcement', '/', setSubmitting));
   }
-
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
-    const u = new A.messages.User();
-    u.setUid(m.getUid());
-    req.setUser(u);
-    A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+    const req = new A.messages.AnnouncementDeleteReq();
+    const m_ = new A.messages.Announcement();
+    m_.setUid(m.getUid());
+    req.setAnnouncement(m_);
+    A.adminService.deleteAnnouncement(req, this.getMeta(), this.delCallback('Announcement Deleted Successfully'));
   }
 }
