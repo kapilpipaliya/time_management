@@ -1,22 +1,23 @@
 <script lang='ts'>
     import * as A from 'index.ts'
-    import {CRUD} from './_form.ts'
+    import {c} from './_form.ts'
     import {onMount, Table, Th, Tr, Pagination, ShowError, Add, TdEdit, TdDelete} from 'index.ts'
+    import { createBrowserHistory } from 'history';
+    const history = createBrowserHistory();
+    let filters = {};
+    let firstRun = true;
 
-    let filters = {
-        login: {value: '', keys: ['login', 'first_name']}
-    };
-    let pageSize = 25;
-    let totalPages = 1; //Fix this
-    let currentPage = 1;
-    const c = new CRUD();
+    const pageSize = c.pageSize;
+    const totalPages = c.totalPages;
+    const currentPage = c.currentPage;
     const er = c.er;
     const data = c.data;
-    onMount(() => {
-        //fetch();
-        c.fetch();
+    const count = c.count
+    onMount(()=> {
+        c.setPaginate(history)
+        c.refetch(history)($pageSize, $currentPage);
+        firstRun = false
     });
-    (ShowError, Add, Table, Th, Tr, TdEdit, TdDelete, Pagination)
-
+    (ShowError, Add, Table, Th, Tr, TdEdit, TdDelete, Pagination);
 </script>
 <template src='./_index.pug'></template>

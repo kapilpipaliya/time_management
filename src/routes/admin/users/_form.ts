@@ -2,9 +2,10 @@ import * as A from "index.ts";
 
 export {A}
 
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
+    this.title_name = "User";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
       login: A.yup.string().required(),
@@ -32,9 +33,9 @@ export class CRUD extends A.CRUDBase {
     }
   }
 
-  onFetch(uids = undefined) {
-    A.adminService.getUser(this.getReq(A.messages.UserReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getUserList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getUser(this.getReq(A.messages.UserReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getUserList(), res);
     }))
   }
 
@@ -61,3 +62,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
   }
 }
+export const c = new CRUD();

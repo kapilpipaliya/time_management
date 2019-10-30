@@ -8,7 +8,7 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
     th Name
     th Hexcode
   tbody(slot='body' let:displayData='{displayData}')
-    +each('displayData as row (row.getName())')
+    +each('displayData as row (row.getUid())')
       Tr(row='{row}')
         TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
         TdDelete(on:click='{c.deleteClick(row)}')

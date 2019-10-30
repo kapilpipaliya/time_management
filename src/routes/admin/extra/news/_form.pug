@@ -8,9 +8,9 @@ TitleBar(title='{title}' breadcrumbs='{breadcrumbs}')
             .cell-md-12.d-none
               label Uid
               Input(type='text' name='uid' )
-            .cell-md-6
-              label Project
-              Input(type='text' name='project' )
+            //.cell-md-6
+            //  label Project
+            //  Input(type='text' name='project' )
             .cell-md-6
               label Title
               Input(type='text' name='title' )
@@ -20,18 +20,18 @@ TitleBar(title='{title}' breadcrumbs='{breadcrumbs}')
             .cell-md-6
               label Description
               Input(type='text' name='description' )
-            .cell-md-6
-              label Author
-              Input(type='text' name='author' )
+            //.cell-md-6
+            //  label Author
+            //  Input(type='text' name='author' )
             .cell-md-6
               label Comments Count
               Input(type='number' name='comments_count' )
-            .cell-md-6
-              label Created
-              Input(type='datetime-local' name='created' )
-            .cell-md-6
-              label Updated
-              Input(type='datetime-local' name='updated' )
+            //.cell-md-6
+            //  label Created
+            //  Input(type='datetime-local' name='created' )
+            //.cell-md-6
+            //  label Updated
+            //  Input(type='datetime-local' name='updated' )
           button.button.primary(type='submit' disabled='{isSubmitting || !isValid}') Submit
           button.button.secondary.ml-1(type='button' on:click='{c.goBack}') Cancel
           ShowError(er='{$er}')

@@ -1,6 +1,6 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Priority";
@@ -10,10 +10,10 @@ export class CRUD extends A.CRUDBase {
       position: A.yup.string().required(),
       is_default: A.yup.bool().required(),
       active: A.yup.bool().required(),
-      color: A.yup.string().required(),
-      project: A.yup.string().required(),
-      created: A.yup.date().required(),
-      updated: A.yup.date().required(),
+      // color: A.yup.string().required(),
+      // project: A.yup.string().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
   newInitialValues() {
@@ -29,15 +29,15 @@ export class CRUD extends A.CRUDBase {
       position: m.getPosition(),
       is_default: m.getIsDefault(),
       active: m.getActive(),
-      color: m.getColor(),
-      project: m.getProject(),
-      created: m.getCreated(),
-      updated: m.getUpdated(),
+      // color: m.getColor(),
+      // project: m.getProject(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getPriorityList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getPriority(this.getReq(A.messages.PriorityReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getPriorityList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
@@ -48,10 +48,10 @@ export class CRUD extends A.CRUDBase {
     m.setPosition(values.position);
     m.setIsDefault(values.is_default);
     m.setActive(values.active);
-    m.setColor(values.color);
-    m.setProject(values.project);
-    m.setCreated(values.created);
-    m.setUpdated(values.updated);
+    // m.setColor(values.color);
+    // m.setProject(values.project);
+    // m.setCreated(values.created);
+    // m.setUpdated(values.updated);
     req.setPriority(m);
     A.adminService.mutatePriority(req, this.getMeta(),
       this.muCallback(values.uid, 'Priority', '/', setSubmitting));
@@ -64,3 +64,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deletePriority(req, this.getMeta(), this.delCallback('Priority Deleted Successfully'));
   }
 }
+export const c = new CRUD();

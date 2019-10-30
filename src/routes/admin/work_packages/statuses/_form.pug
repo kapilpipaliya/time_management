@@ -29,12 +29,12 @@ TitleBar(title='{title}' breadcrumbs='{breadcrumbs}')
             .cell-md-6
               label Is Readonly
               Input(type='checkbox' name='is_readonly' )
-            .cell-md-6
-              label Created
-              Input(type='datetime-local' name='created' )
-            .cell-md-6
-              label Updated
-              Input(type='datetime-local' name='updated' )
+            //.cell-md-6
+            //  label Created
+            //  Input(type='datetime-local' name='created' )
+            //.cell-md-6
+            //  label Updated
+            //  Input(type='datetime-local' name='updated' )
           button.button.primary(type='submit' disabled='{isSubmitting || !isValid}') Submit
           button.button.secondary.ml-1(type='button' on:click='{c.goBack}') Cancel
           ShowError(er='{$er}')

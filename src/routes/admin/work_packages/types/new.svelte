@@ -1,8 +1,6 @@
 <script lang='ts'>
     import {TitleBar, Form, Input, ShowError} from 'index.ts'
-    import {CRUD, A} from './_form.ts'
-
-    const c = new CRUD();
+    import {c, A} from './_form.ts'
     const er = c.er;
     const schema = c.schema;
     const initialValues = c.initialValues;

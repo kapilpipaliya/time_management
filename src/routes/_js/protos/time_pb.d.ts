@@ -269,6 +269,11 @@ export namespace User {
 }
 
 export class UserReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   getStatus(): UserReq.StatusMap[keyof UserReq.StatusMap];
   setStatus(value: UserReq.StatusMap[keyof UserReq.StatusMap]): void;
 
@@ -292,6 +297,7 @@ export class UserReq extends jspb.Message {
 
 export namespace UserReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     status: UserReq.StatusMap[keyof UserReq.StatusMap],
     name: string,
     uids?: Uids.AsObject,
@@ -313,6 +319,11 @@ export class UserRes extends jspb.Message {
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
 
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   clearUserList(): void;
   getUserList(): Array<User>;
   setUserList(value: Array<User>): void;
@@ -332,6 +343,7 @@ export namespace UserRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     userList: Array<User.AsObject>,
   }
 }
@@ -409,6 +421,11 @@ export namespace Group {
 }
 
 export class GroupReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -426,6 +443,7 @@ export class GroupReq extends jspb.Message {
 
 export namespace GroupReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -436,6 +454,11 @@ export class GroupRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearGroupList(): void;
   getGroupList(): Array<Group>;
@@ -456,6 +479,7 @@ export namespace GroupRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     groupList: Array<Group.AsObject>,
   }
 }
@@ -697,6 +721,11 @@ export namespace Type {
 }
 
 export class TypeReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -714,6 +743,7 @@ export class TypeReq extends jspb.Message {
 
 export namespace TypeReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -724,6 +754,11 @@ export class TypeRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearTypeList(): void;
   getTypeList(): Array<Type>;
@@ -744,6 +779,7 @@ export namespace TypeRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     typeList: Array<Type.AsObject>,
   }
 }
@@ -843,6 +879,11 @@ export namespace Status {
 }
 
 export class StatusReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -860,6 +901,7 @@ export class StatusReq extends jspb.Message {
 
 export namespace StatusReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -870,6 +912,11 @@ export class StatusRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearStatusesList(): void;
   getStatusesList(): Array<Status>;
@@ -890,6 +937,7 @@ export namespace StatusRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     statusesList: Array<Status.AsObject>,
   }
 }
@@ -981,6 +1029,11 @@ export namespace Activity {
 }
 
 export class ActivityReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -998,6 +1051,7 @@ export class ActivityReq extends jspb.Message {
 
 export namespace ActivityReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1008,6 +1062,11 @@ export class ActivityRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearActivityList(): void;
   getActivityList(): Array<Activity>;
@@ -1028,6 +1087,7 @@ export namespace ActivityRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     activityList: Array<Activity.AsObject>,
   }
 }
@@ -1125,6 +1185,11 @@ export namespace Priority {
 }
 
 export class PriorityReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -1142,6 +1207,7 @@ export class PriorityReq extends jspb.Message {
 
 export namespace PriorityReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1152,6 +1218,11 @@ export class PriorityRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearPriorityList(): void;
   getPriorityList(): Array<Priority>;
@@ -1172,6 +1243,7 @@ export namespace PriorityRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     priorityList: Array<Priority.AsObject>,
   }
 }
@@ -1263,6 +1335,11 @@ export namespace Category {
 }
 
 export class CategoryReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -1280,6 +1357,7 @@ export class CategoryReq extends jspb.Message {
 
 export namespace CategoryReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1290,6 +1368,11 @@ export class CategoryRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearCategoryList(): void;
   getCategoryList(): Array<Category>;
@@ -1310,6 +1393,7 @@ export namespace CategoryRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     categoryList: Array<Category.AsObject>,
   }
 }
@@ -1391,6 +1475,11 @@ export namespace Role {
 }
 
 export class RoleReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -1408,6 +1497,7 @@ export class RoleReq extends jspb.Message {
 
 export namespace RoleReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1418,6 +1508,11 @@ export class RoleRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearRoleList(): void;
   getRoleList(): Array<Role>;
@@ -1438,6 +1533,7 @@ export namespace RoleRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     roleList: Array<Role.AsObject>,
   }
 }
@@ -1519,6 +1615,11 @@ export namespace Announcement {
 }
 
 export class AnnouncementReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -1536,6 +1637,7 @@ export class AnnouncementReq extends jspb.Message {
 
 export namespace AnnouncementReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1546,6 +1648,11 @@ export class AnnouncementRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearAnnouncementList(): void;
   getAnnouncementList(): Array<Announcement>;
@@ -1566,6 +1673,7 @@ export namespace AnnouncementRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     announcementList: Array<Announcement.AsObject>,
   }
 }
@@ -1663,6 +1771,11 @@ export namespace News {
 }
 
 export class NewsReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
   hasUids(): boolean;
   clearUids(): void;
   getUids(): Uids | undefined;
@@ -1680,6 +1793,7 @@ export class NewsReq extends jspb.Message {
 
 export namespace NewsReq {
   export type AsObject = {
+    paginate?: Paginate.AsObject,
     uids?: Uids.AsObject,
   }
 }
@@ -1690,6 +1804,11 @@ export class NewsRes extends jspb.Message {
 
   getErrorMsg(): string;
   setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
 
   clearNewsList(): void;
   getNewsList(): Array<News>;
@@ -1710,6 +1829,7 @@ export namespace NewsRes {
   export type AsObject = {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
+    paginate?: Paginate.AsObject,
     newsList: Array<News.AsObject>,
   }
 }

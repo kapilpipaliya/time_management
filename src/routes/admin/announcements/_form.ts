@@ -1,6 +1,6 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Announcement";
@@ -9,8 +9,8 @@ export class CRUD extends A.CRUDBase {
       text: A.yup.string().required(),
       show_until: A.yup.date().required(),
       active: A.yup.bool().required(),
-      created: A.yup.date().required(),
-      updated: A.yup.date().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
   newInitialValues() {
@@ -24,13 +24,13 @@ export class CRUD extends A.CRUDBase {
       text: m.getText(),
       show_until: m.getShowUntil(),
       active: m.getActive(),
-      created: m.getCreated(),
-      updated: m.getUpdated(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getAnnouncement(this.getReq(A.messages.AnnouncementReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getAnnouncementList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getAnnouncement(this.getReq(A.messages.AnnouncementReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getAnnouncementList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
@@ -38,10 +38,10 @@ export class CRUD extends A.CRUDBase {
     const m = new A.messages.Announcement();
     m.setUid(values.uid);
     m.setText(values.text);
-    m.setShowUntil(values.show_until);
+    m.setShowUntil(values.show_until.toISOString());
     m.setActive(values.active);
-    m.setCreated(values.created);
-    m.setUpdated(values.updated);
+    // m.setCreated(values.created);
+    // m.setUpdated(values.updated);
     req.setAnnouncement(m);
     A.adminService.mutateAnnouncement(req, this.getMeta(),
       this.muCallback(values.uid, 'Announcement', '/', setSubmitting));
@@ -54,3 +54,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteAnnouncement(req, this.getMeta(), this.delCallback('Announcement Deleted Successfully'));
   }
 }
+export const c = new CRUD();

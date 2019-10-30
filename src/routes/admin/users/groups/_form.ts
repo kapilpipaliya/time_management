@@ -1,6 +1,6 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Group";
@@ -21,9 +21,9 @@ export class CRUD extends A.CRUDBase {
       //users_count: m.getUsersCount(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getGroupList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getGroup(this.getReq(A.messages.GroupReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getGroupList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
@@ -44,3 +44,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteGroup(req, this.getMeta(), this.delCallback('Group Deleted Successfully'));
   }
 }
+export const c = new CRUD();

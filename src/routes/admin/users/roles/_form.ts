@@ -2,7 +2,7 @@ import * as A from 'index.ts';
 
 export {A}
 
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Role";
@@ -31,9 +31,9 @@ export class CRUD extends A.CRUDBase {
     }
   }
 
-  onFetch(uids = undefined) {
-    A.adminService.getRole(this.getReq(A.messages.RoleReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getRoleList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getRole(this.getReq(A.messages.RoleReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getRoleList(), res);
     }))
   }
 
@@ -58,3 +58,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteRole(req, this.getMeta(), this.delCallback('Role Deleted Successfully'));
   }
 }
+export const c = new CRUD();

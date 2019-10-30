@@ -3198,8 +3198,9 @@ proto.todo.UserReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.UserReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    status: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
+    status: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -3238,14 +3239,19 @@ proto.todo.UserReq.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 2:
       var value = /** @type {!proto.todo.UserReq.Status} */ (reader.readEnum());
       msg.setStatus(value);
       break;
-    case 2:
+    case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
-    case 3:
+    case 4:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
       msg.setUids(value);
@@ -3279,24 +3285,32 @@ proto.todo.UserReq.prototype.serializeBinary = function() {
  */
 proto.todo.UserReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getStatus();
   if (f !== 0.0) {
     writer.writeEnum(
-      1,
+      2,
       f
     );
   }
   f = message.getName();
   if (f.length > 0) {
     writer.writeString(
-      2,
+      3,
       f
     );
   }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
-      3,
+      4,
       f,
       proto.todo.Uids.serializeBinaryToWriter
     );
@@ -3314,48 +3328,81 @@ proto.todo.UserReq.Status = {
 };
 
 /**
- * optional Status status = 1;
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.UserReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.UserReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.UserReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.UserReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional Status status = 2;
  * @return {!proto.todo.UserReq.Status}
  */
 proto.todo.UserReq.prototype.getStatus = function() {
-  return /** @type {!proto.todo.UserReq.Status} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {!proto.todo.UserReq.Status} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /** @param {!proto.todo.UserReq.Status} value */
 proto.todo.UserReq.prototype.setStatus = function(value) {
-  jspb.Message.setProto3EnumField(this, 1, value);
+  jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 
 /**
- * optional string name = 2;
+ * optional string name = 3;
  * @return {string}
  */
 proto.todo.UserReq.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
 proto.todo.UserReq.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional Uids uids = 3;
+ * optional Uids uids = 4;
  * @return {?proto.todo.Uids}
  */
 proto.todo.UserReq.prototype.getUids = function() {
   return /** @type{?proto.todo.Uids} */ (
-    jspb.Message.getWrapperField(this, proto.todo.Uids, 3));
+    jspb.Message.getWrapperField(this, proto.todo.Uids, 4));
 };
 
 
 /** @param {?proto.todo.Uids|undefined} value */
 proto.todo.UserReq.prototype.setUids = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -3372,7 +3419,7 @@ proto.todo.UserReq.prototype.clearUids = function() {
  * @return {boolean}
  */
 proto.todo.UserReq.prototype.hasUids = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -3382,7 +3429,7 @@ proto.todo.UserReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.UserRes.repeatedFields_ = [3];
+proto.todo.UserRes.repeatedFields_ = [4];
 
 
 
@@ -3417,6 +3464,7 @@ proto.todo.UserRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     userList: jspb.Message.toObjectList(msg.getUserList(),
     proto.todo.User.toObject, includeInstance)
   };
@@ -3464,6 +3512,11 @@ proto.todo.UserRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.User;
       reader.readMessage(value,proto.todo.User.deserializeBinaryFromReader);
       msg.addUser(value);
@@ -3511,10 +3564,18 @@ proto.todo.UserRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUserList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.User.serializeBinaryToWriter
     );
@@ -3553,18 +3614,51 @@ proto.todo.UserRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated User user = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.UserRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.UserRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.UserRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.UserRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated User user = 4;
  * @return {!Array<!proto.todo.User>}
  */
 proto.todo.UserRes.prototype.getUserList = function() {
   return /** @type{!Array<!proto.todo.User>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.User, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.User, 4));
 };
 
 
 /** @param {!Array<!proto.todo.User>} value */
 proto.todo.UserRes.prototype.setUserList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -3574,7 +3668,7 @@ proto.todo.UserRes.prototype.setUserList = function(value) {
  * @return {!proto.todo.User}
  */
 proto.todo.UserRes.prototype.addUser = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.User, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.User, opt_index);
 };
 
 
@@ -4093,6 +4187,7 @@ proto.todo.GroupReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.GroupReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -4130,6 +4225,11 @@ proto.todo.GroupReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -4164,6 +4264,14 @@ proto.todo.GroupReq.prototype.serializeBinary = function() {
  */
 proto.todo.GroupReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -4172,6 +4280,39 @@ proto.todo.GroupReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.GroupReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.GroupReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.GroupReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.GroupReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -4214,7 +4355,7 @@ proto.todo.GroupReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.GroupRes.repeatedFields_ = [3];
+proto.todo.GroupRes.repeatedFields_ = [4];
 
 
 
@@ -4249,6 +4390,7 @@ proto.todo.GroupRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     groupList: jspb.Message.toObjectList(msg.getGroupList(),
     proto.todo.Group.toObject, includeInstance)
   };
@@ -4296,6 +4438,11 @@ proto.todo.GroupRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Group;
       reader.readMessage(value,proto.todo.Group.deserializeBinaryFromReader);
       msg.addGroup(value);
@@ -4343,10 +4490,18 @@ proto.todo.GroupRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getGroupList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Group.serializeBinaryToWriter
     );
@@ -4385,18 +4540,51 @@ proto.todo.GroupRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Group group = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.GroupRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.GroupRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.GroupRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.GroupRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Group group = 4;
  * @return {!Array<!proto.todo.Group>}
  */
 proto.todo.GroupRes.prototype.getGroupList = function() {
   return /** @type{!Array<!proto.todo.Group>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Group, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Group, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Group>} value */
 proto.todo.GroupRes.prototype.setGroupList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -4406,7 +4594,7 @@ proto.todo.GroupRes.prototype.setGroupList = function(value) {
  * @return {!proto.todo.Group}
  */
 proto.todo.GroupRes.prototype.addGroup = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Group, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Group, opt_index);
 };
 
 
@@ -6040,6 +6228,7 @@ proto.todo.TypeReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.TypeReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -6077,6 +6266,11 @@ proto.todo.TypeReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -6111,6 +6305,14 @@ proto.todo.TypeReq.prototype.serializeBinary = function() {
  */
 proto.todo.TypeReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -6119,6 +6321,39 @@ proto.todo.TypeReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.TypeReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.TypeReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.TypeReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.TypeReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -6161,7 +6396,7 @@ proto.todo.TypeReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.TypeRes.repeatedFields_ = [3];
+proto.todo.TypeRes.repeatedFields_ = [4];
 
 
 
@@ -6196,6 +6431,7 @@ proto.todo.TypeRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     typeList: jspb.Message.toObjectList(msg.getTypeList(),
     proto.todo.Type.toObject, includeInstance)
   };
@@ -6243,6 +6479,11 @@ proto.todo.TypeRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Type;
       reader.readMessage(value,proto.todo.Type.deserializeBinaryFromReader);
       msg.addType(value);
@@ -6290,10 +6531,18 @@ proto.todo.TypeRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getTypeList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Type.serializeBinaryToWriter
     );
@@ -6332,18 +6581,51 @@ proto.todo.TypeRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Type type = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.TypeRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.TypeRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.TypeRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.TypeRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Type type = 4;
  * @return {!Array<!proto.todo.Type>}
  */
 proto.todo.TypeRes.prototype.getTypeList = function() {
   return /** @type{!Array<!proto.todo.Type>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Type, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Type, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Type>} value */
 proto.todo.TypeRes.prototype.setTypeList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -6353,7 +6635,7 @@ proto.todo.TypeRes.prototype.setTypeList = function(value) {
  * @return {!proto.todo.Type}
  */
 proto.todo.TypeRes.prototype.addType = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Type, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Type, opt_index);
 };
 
 
@@ -7027,6 +7309,7 @@ proto.todo.StatusReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.StatusReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -7064,6 +7347,11 @@ proto.todo.StatusReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -7098,6 +7386,14 @@ proto.todo.StatusReq.prototype.serializeBinary = function() {
  */
 proto.todo.StatusReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -7106,6 +7402,39 @@ proto.todo.StatusReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.StatusReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.StatusReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.StatusReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.StatusReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -7148,7 +7477,7 @@ proto.todo.StatusReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.StatusRes.repeatedFields_ = [3];
+proto.todo.StatusRes.repeatedFields_ = [4];
 
 
 
@@ -7183,6 +7512,7 @@ proto.todo.StatusRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     statusesList: jspb.Message.toObjectList(msg.getStatusesList(),
     proto.todo.Status.toObject, includeInstance)
   };
@@ -7230,6 +7560,11 @@ proto.todo.StatusRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Status;
       reader.readMessage(value,proto.todo.Status.deserializeBinaryFromReader);
       msg.addStatuses(value);
@@ -7277,10 +7612,18 @@ proto.todo.StatusRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getStatusesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Status.serializeBinaryToWriter
     );
@@ -7319,18 +7662,51 @@ proto.todo.StatusRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Status statuses = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.StatusRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.StatusRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.StatusRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.StatusRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Status statuses = 4;
  * @return {!Array<!proto.todo.Status>}
  */
 proto.todo.StatusRes.prototype.getStatusesList = function() {
   return /** @type{!Array<!proto.todo.Status>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Status, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Status, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Status>} value */
 proto.todo.StatusRes.prototype.setStatusesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -7340,7 +7716,7 @@ proto.todo.StatusRes.prototype.setStatusesList = function(value) {
  * @return {!proto.todo.Status}
  */
 proto.todo.StatusRes.prototype.addStatuses = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Status, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Status, opt_index);
 };
 
 
@@ -7960,6 +8336,7 @@ proto.todo.ActivityReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.ActivityReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -7997,6 +8374,11 @@ proto.todo.ActivityReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -8031,6 +8413,14 @@ proto.todo.ActivityReq.prototype.serializeBinary = function() {
  */
 proto.todo.ActivityReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -8039,6 +8429,39 @@ proto.todo.ActivityReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.ActivityReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.ActivityReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.ActivityReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.ActivityReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -8081,7 +8504,7 @@ proto.todo.ActivityReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.ActivityRes.repeatedFields_ = [3];
+proto.todo.ActivityRes.repeatedFields_ = [4];
 
 
 
@@ -8116,6 +8539,7 @@ proto.todo.ActivityRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     activityList: jspb.Message.toObjectList(msg.getActivityList(),
     proto.todo.Activity.toObject, includeInstance)
   };
@@ -8163,6 +8587,11 @@ proto.todo.ActivityRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Activity;
       reader.readMessage(value,proto.todo.Activity.deserializeBinaryFromReader);
       msg.addActivity(value);
@@ -8210,10 +8639,18 @@ proto.todo.ActivityRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getActivityList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Activity.serializeBinaryToWriter
     );
@@ -8252,18 +8689,51 @@ proto.todo.ActivityRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Activity activity = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.ActivityRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.ActivityRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.ActivityRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.ActivityRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Activity activity = 4;
  * @return {!Array<!proto.todo.Activity>}
  */
 proto.todo.ActivityRes.prototype.getActivityList = function() {
   return /** @type{!Array<!proto.todo.Activity>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Activity, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Activity, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Activity>} value */
 proto.todo.ActivityRes.prototype.setActivityList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -8273,7 +8743,7 @@ proto.todo.ActivityRes.prototype.setActivityList = function(value) {
  * @return {!proto.todo.Activity}
  */
 proto.todo.ActivityRes.prototype.addActivity = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Activity, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Activity, opt_index);
 };
 
 
@@ -8940,6 +9410,7 @@ proto.todo.PriorityReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.PriorityReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -8977,6 +9448,11 @@ proto.todo.PriorityReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -9011,6 +9487,14 @@ proto.todo.PriorityReq.prototype.serializeBinary = function() {
  */
 proto.todo.PriorityReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -9019,6 +9503,39 @@ proto.todo.PriorityReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.PriorityReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.PriorityReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.PriorityReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.PriorityReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -9061,7 +9578,7 @@ proto.todo.PriorityReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.PriorityRes.repeatedFields_ = [3];
+proto.todo.PriorityRes.repeatedFields_ = [4];
 
 
 
@@ -9096,6 +9613,7 @@ proto.todo.PriorityRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     priorityList: jspb.Message.toObjectList(msg.getPriorityList(),
     proto.todo.Priority.toObject, includeInstance)
   };
@@ -9143,6 +9661,11 @@ proto.todo.PriorityRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Priority;
       reader.readMessage(value,proto.todo.Priority.deserializeBinaryFromReader);
       msg.addPriority(value);
@@ -9190,10 +9713,18 @@ proto.todo.PriorityRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getPriorityList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Priority.serializeBinaryToWriter
     );
@@ -9232,18 +9763,51 @@ proto.todo.PriorityRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Priority priority = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.PriorityRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.PriorityRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.PriorityRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.PriorityRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Priority priority = 4;
  * @return {!Array<!proto.todo.Priority>}
  */
 proto.todo.PriorityRes.prototype.getPriorityList = function() {
   return /** @type{!Array<!proto.todo.Priority>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Priority, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Priority, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Priority>} value */
 proto.todo.PriorityRes.prototype.setPriorityList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -9253,7 +9817,7 @@ proto.todo.PriorityRes.prototype.setPriorityList = function(value) {
  * @return {!proto.todo.Priority}
  */
 proto.todo.PriorityRes.prototype.addPriority = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Priority, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Priority, opt_index);
 };
 
 
@@ -9873,6 +10437,7 @@ proto.todo.CategoryReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.CategoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -9910,6 +10475,11 @@ proto.todo.CategoryReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -9944,6 +10514,14 @@ proto.todo.CategoryReq.prototype.serializeBinary = function() {
  */
 proto.todo.CategoryReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -9952,6 +10530,39 @@ proto.todo.CategoryReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.CategoryReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.CategoryReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.CategoryReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.CategoryReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -9994,7 +10605,7 @@ proto.todo.CategoryReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.CategoryRes.repeatedFields_ = [3];
+proto.todo.CategoryRes.repeatedFields_ = [4];
 
 
 
@@ -10029,6 +10640,7 @@ proto.todo.CategoryRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     categoryList: jspb.Message.toObjectList(msg.getCategoryList(),
     proto.todo.Category.toObject, includeInstance)
   };
@@ -10076,6 +10688,11 @@ proto.todo.CategoryRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Category;
       reader.readMessage(value,proto.todo.Category.deserializeBinaryFromReader);
       msg.addCategory(value);
@@ -10123,10 +10740,18 @@ proto.todo.CategoryRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getCategoryList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Category.serializeBinaryToWriter
     );
@@ -10165,18 +10790,51 @@ proto.todo.CategoryRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Category category = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.CategoryRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.CategoryRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.CategoryRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.CategoryRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Category category = 4;
  * @return {!Array<!proto.todo.Category>}
  */
 proto.todo.CategoryRes.prototype.getCategoryList = function() {
   return /** @type{!Array<!proto.todo.Category>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Category, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Category, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Category>} value */
 proto.todo.CategoryRes.prototype.setCategoryList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -10186,7 +10844,7 @@ proto.todo.CategoryRes.prototype.setCategoryList = function(value) {
  * @return {!proto.todo.Category}
  */
 proto.todo.CategoryRes.prototype.addCategory = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Category, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Category, opt_index);
 };
 
 
@@ -10732,6 +11390,7 @@ proto.todo.RoleReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.RoleReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -10769,6 +11428,11 @@ proto.todo.RoleReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -10803,6 +11467,14 @@ proto.todo.RoleReq.prototype.serializeBinary = function() {
  */
 proto.todo.RoleReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -10811,6 +11483,39 @@ proto.todo.RoleReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.RoleReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.RoleReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.RoleReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.RoleReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -10853,7 +11558,7 @@ proto.todo.RoleReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.RoleRes.repeatedFields_ = [3];
+proto.todo.RoleRes.repeatedFields_ = [4];
 
 
 
@@ -10888,6 +11593,7 @@ proto.todo.RoleRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     roleList: jspb.Message.toObjectList(msg.getRoleList(),
     proto.todo.Role.toObject, includeInstance)
   };
@@ -10935,6 +11641,11 @@ proto.todo.RoleRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Role;
       reader.readMessage(value,proto.todo.Role.deserializeBinaryFromReader);
       msg.addRole(value);
@@ -10982,10 +11693,18 @@ proto.todo.RoleRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getRoleList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Role.serializeBinaryToWriter
     );
@@ -11024,18 +11743,51 @@ proto.todo.RoleRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Role role = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.RoleRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.RoleRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.RoleRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.RoleRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Role role = 4;
  * @return {!Array<!proto.todo.Role>}
  */
 proto.todo.RoleRes.prototype.getRoleList = function() {
   return /** @type{!Array<!proto.todo.Role>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Role, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Role, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Role>} value */
 proto.todo.RoleRes.prototype.setRoleList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -11045,7 +11797,7 @@ proto.todo.RoleRes.prototype.setRoleList = function(value) {
  * @return {!proto.todo.Role}
  */
 proto.todo.RoleRes.prototype.addRole = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Role, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Role, opt_index);
 };
 
 
@@ -11591,6 +12343,7 @@ proto.todo.AnnouncementReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.AnnouncementReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -11628,6 +12381,11 @@ proto.todo.AnnouncementReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -11662,6 +12420,14 @@ proto.todo.AnnouncementReq.prototype.serializeBinary = function() {
  */
 proto.todo.AnnouncementReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -11670,6 +12436,39 @@ proto.todo.AnnouncementReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.AnnouncementReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.AnnouncementReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.AnnouncementReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.AnnouncementReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -11712,7 +12511,7 @@ proto.todo.AnnouncementReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.AnnouncementRes.repeatedFields_ = [3];
+proto.todo.AnnouncementRes.repeatedFields_ = [4];
 
 
 
@@ -11747,6 +12546,7 @@ proto.todo.AnnouncementRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     announcementList: jspb.Message.toObjectList(msg.getAnnouncementList(),
     proto.todo.Announcement.toObject, includeInstance)
   };
@@ -11794,6 +12594,11 @@ proto.todo.AnnouncementRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.Announcement;
       reader.readMessage(value,proto.todo.Announcement.deserializeBinaryFromReader);
       msg.addAnnouncement(value);
@@ -11841,10 +12646,18 @@ proto.todo.AnnouncementRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getAnnouncementList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.Announcement.serializeBinaryToWriter
     );
@@ -11883,18 +12696,51 @@ proto.todo.AnnouncementRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated Announcement announcement = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.AnnouncementRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.AnnouncementRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.AnnouncementRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.AnnouncementRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated Announcement announcement = 4;
  * @return {!Array<!proto.todo.Announcement>}
  */
 proto.todo.AnnouncementRes.prototype.getAnnouncementList = function() {
   return /** @type{!Array<!proto.todo.Announcement>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.Announcement, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.Announcement, 4));
 };
 
 
 /** @param {!Array<!proto.todo.Announcement>} value */
 proto.todo.AnnouncementRes.prototype.setAnnouncementList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -11904,7 +12750,7 @@ proto.todo.AnnouncementRes.prototype.setAnnouncementList = function(value) {
  * @return {!proto.todo.Announcement}
  */
 proto.todo.AnnouncementRes.prototype.addAnnouncement = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.Announcement, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.Announcement, opt_index);
 };
 
 
@@ -12571,6 +13417,7 @@ proto.todo.NewsReq.prototype.toObject = function(opt_includeInstance) {
  */
 proto.todo.NewsReq.toObject = function(includeInstance, msg) {
   var f, obj = {
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     uids: (f = msg.getUids()) && proto.todo.Uids.toObject(includeInstance, f)
   };
 
@@ -12608,6 +13455,11 @@ proto.todo.NewsReq.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 1:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
     case 3:
       var value = new proto.todo.Uids;
       reader.readMessage(value,proto.todo.Uids.deserializeBinaryFromReader);
@@ -12642,6 +13494,14 @@ proto.todo.NewsReq.prototype.serializeBinary = function() {
  */
 proto.todo.NewsReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getUids();
   if (f != null) {
     writer.writeMessage(
@@ -12650,6 +13510,39 @@ proto.todo.NewsReq.serializeBinaryToWriter = function(message, writer) {
       proto.todo.Uids.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional Paginate paginate = 1;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.NewsReq.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 1));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.NewsReq.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.NewsReq.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.NewsReq.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -12692,7 +13585,7 @@ proto.todo.NewsReq.prototype.hasUids = function() {
  * @private {!Array<number>}
  * @const
  */
-proto.todo.NewsRes.repeatedFields_ = [3];
+proto.todo.NewsRes.repeatedFields_ = [4];
 
 
 
@@ -12727,6 +13620,7 @@ proto.todo.NewsRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: jspb.Message.getFieldWithDefault(msg, 1, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    paginate: (f = msg.getPaginate()) && proto.todo.Paginate.toObject(includeInstance, f),
     newsList: jspb.Message.toObjectList(msg.getNewsList(),
     proto.todo.News.toObject, includeInstance)
   };
@@ -12774,6 +13668,11 @@ proto.todo.NewsRes.deserializeBinaryFromReader = function(msg, reader) {
       msg.setErrorMsg(value);
       break;
     case 3:
+      var value = new proto.todo.Paginate;
+      reader.readMessage(value,proto.todo.Paginate.deserializeBinaryFromReader);
+      msg.setPaginate(value);
+      break;
+    case 4:
       var value = new proto.todo.News;
       reader.readMessage(value,proto.todo.News.deserializeBinaryFromReader);
       msg.addNews(value);
@@ -12821,10 +13720,18 @@ proto.todo.NewsRes.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPaginate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.todo.Paginate.serializeBinaryToWriter
+    );
+  }
   f = message.getNewsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      3,
+      4,
       f,
       proto.todo.News.serializeBinaryToWriter
     );
@@ -12863,18 +13770,51 @@ proto.todo.NewsRes.prototype.setErrorMsg = function(value) {
 
 
 /**
- * repeated News news = 3;
+ * optional Paginate paginate = 3;
+ * @return {?proto.todo.Paginate}
+ */
+proto.todo.NewsRes.prototype.getPaginate = function() {
+  return /** @type{?proto.todo.Paginate} */ (
+    jspb.Message.getWrapperField(this, proto.todo.Paginate, 3));
+};
+
+
+/** @param {?proto.todo.Paginate|undefined} value */
+proto.todo.NewsRes.prototype.setPaginate = function(value) {
+  jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.todo.NewsRes.prototype.clearPaginate = function() {
+  this.setPaginate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.todo.NewsRes.prototype.hasPaginate = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * repeated News news = 4;
  * @return {!Array<!proto.todo.News>}
  */
 proto.todo.NewsRes.prototype.getNewsList = function() {
   return /** @type{!Array<!proto.todo.News>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.todo.News, 3));
+    jspb.Message.getRepeatedWrapperField(this, proto.todo.News, 4));
 };
 
 
 /** @param {!Array<!proto.todo.News>} value */
 proto.todo.NewsRes.prototype.setNewsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 3, value);
+  jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
@@ -12884,7 +13824,7 @@ proto.todo.NewsRes.prototype.setNewsList = function(value) {
  * @return {!proto.todo.News}
  */
 proto.todo.NewsRes.prototype.addNews = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.todo.News, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.todo.News, opt_index);
 };
 
 

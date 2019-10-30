@@ -1,19 +1,19 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "News";
     this.schema = A.yup.object().shape({
       uid: A.yup.string(),
-      project: A.yup.string().required(),
+      // project: A.yup.string().required(),
       title: A.yup.string().required(),
       summery: A.yup.string().required(),
       description: A.yup.string().required(),
-      author: A.yup.string().required(),
+      // author: A.yup.string().required(),
       comments_count: A.yup.string().required(),
-      created: A.yup.date().required(),
-      updated: A.yup.date().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
   newInitialValues() {
@@ -23,33 +23,33 @@ export class CRUD extends A.CRUDBase {
   toInitialValues(m) {
     return {
       uid: m.getUid(),
-      project: m.getProject(),
+      // project: m.getProject(),
       title: m.getTitle(),
       summery: m.getSummery(),
       description: m.getDescription(),
-      author: m.getAuthor(),
+      // author: m.getAuthor(),
       comments_count: m.getCommentsCount(),
-      created: m.getCreated(),
-      updated: m.getUpdated(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getNews(this.getReq(A.messages.NewsReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getNewsList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getNews(this.getReq(A.messages.NewsReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getNewsList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
     const req = new A.messages.NewsMutationReq();
     const m = new A.messages.News();
     m.setUid(values.uid);
-    m.setProject(values.project);
+    // m.setProject(values.project);
     m.setTitle(values.title);
     m.setSummery(values.summery);
     m.setDescription(values.description);
-    m.setAuthor(values.author);
+    // m.setAuthor(values.author);
     m.setCommentsCount(values.comments_count);
-    m.setCreated(values.created);
-    m.setUpdated(values.updated);
+    // m.setCreated(values.created);
+    // m.setUpdated(values.updated);
     req.setNews(m);
     A.adminService.mutateNews(req, this.getMeta(),
       this.muCallback(values.uid, 'News', '/', setSubmitting));
@@ -62,3 +62,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteNews(req, this.getMeta(), this.delCallback('News Deleted Successfully'));
   }
 }
+export const c = new CRUD();

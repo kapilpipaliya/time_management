@@ -1,6 +1,6 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Activity";
@@ -10,9 +10,9 @@ export class CRUD extends A.CRUDBase {
       position: A.yup.string().required(),
       is_default: A.yup.bool().required(),
       active: A.yup.bool().required(),
-      project: A.yup.string().required(),
-      created: A.yup.date().required(),
-      updated: A.yup.date().required(),
+      // project: A.yup.string().required(),
+      // created: A.yup.date().required(),
+      // updated: A.yup.date().required(),
     });
   }
   newInitialValues() {
@@ -28,14 +28,14 @@ export class CRUD extends A.CRUDBase {
       position: m.getPosition(),
       is_default: m.getIsDefault(),
       active: m.getActive(),
-      project: m.getProject(),
-      created: m.getCreated(),
-      updated: m.getUpdated(),
+      // project: m.getProject(),
+      // created: m.getCreated(),
+      // updated: m.getUpdated(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getActivity(this.getReq(A.messages.ActivityReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getActivityList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getActivity(this.getReq(A.messages.ActivityReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getActivityList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
@@ -46,9 +46,9 @@ export class CRUD extends A.CRUDBase {
     m.setPosition(values.position);
     m.setIsDefault(values.is_default);
     m.setActive(values.active);
-    m.setProject(values.project);
-    m.setCreated(values.created);
-    m.setUpdated(values.updated);
+    // m.setProject(values.project);
+    // m.setCreated(values.created);
+    // m.setUpdated(values.updated);
     req.setActivity(m);
     A.adminService.mutateActivity(req, this.getMeta(),
       this.muCallback(values.uid, 'Activity', '/', setSubmitting));
@@ -61,3 +61,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteActivity(req, this.getMeta(), this.delCallback('Activity Deleted Successfully'));
   }
 }
+export const c = new CRUD();

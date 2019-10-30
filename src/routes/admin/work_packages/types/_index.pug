@@ -1,6 +1,6 @@
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
-Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
+Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
   thead(slot='head')
     th Edit
     th Delete
@@ -14,8 +14,8 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
     th Attribute Groups
     th Description
   tbody(slot='body' let:displayData='{displayData}')
-    +each('displayData as row')
-      Tr({row})
+    +each('displayData as row (row.getUid())')
+      Tr(row='{row}')
         TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
         TdDelete(on:click='{c.deleteClick(row)}')
         td {row.getName()}
@@ -27,4 +27,5 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
         td {row.getColor()}
         td {row.getAttributeGroups()}
         td {row.getDescription()}
-Pagination({totalPages} bind:currentPage='{currentPage}')
++if('!firstRun')
+  Pagination(count='{$count}' totalPages='{$totalPages}' bind:currentPage='{$currentPage}' reFetch='{c.refetch(history)}' bind:maxPageLinks='{$pageSize}')

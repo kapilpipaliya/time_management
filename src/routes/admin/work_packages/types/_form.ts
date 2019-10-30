@@ -1,6 +1,6 @@
 import * as A from 'index.ts';
 export {A}
-export class CRUD extends A.CRUDBase {
+class CRUD extends A.CRUDBase {
   constructor() {
     super();
     this.title_name = "Type";
@@ -39,9 +39,9 @@ export class CRUD extends A.CRUDBase {
       description: m.getDescription(),
     }
   }
-  onFetch(uids = undefined) {
-    A.adminService.getType(this.getReq(A.messages.TypeReq, uids), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getTypeList());
+  onFetch(p, uids = undefined) {
+    A.adminService.getType(this.getReq(A.messages.TypeReq, uids, p), this.getMeta(), this.getCallback(res => {
+      this.setData(uids, res.getTypeList(), res);
     }))
   }
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
@@ -69,3 +69,4 @@ export class CRUD extends A.CRUDBase {
     A.adminService.deleteType(req, this.getMeta(), this.delCallback('Type Deleted Successfully'));
   }
 }
+export const c = new CRUD();

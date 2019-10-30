@@ -1,6 +1,6 @@
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
-Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{pageSize}' currentPage='{currentPage}' selectedClass='secondary')
+Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
   thead(slot='head')
     th Edit
     th Delete
@@ -9,11 +9,11 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
     th Is Default
     th Active
     th Project
-    th Created
-    th Updated
+    //th Created
+    //th Updated
   tbody(slot='body' let:displayData='{displayData}')
-    +each('displayData as row')
-      Tr({row})
+    +each('displayData as row (row.getUid())')
+      Tr(row='{row}')
         TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
         TdDelete(on:click='{c.deleteClick(row)}')
         td {row.getName()}
@@ -21,6 +21,7 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
         td {row.getIsDefault()}
         td {row.getActive()}
         td {row.getProject()}
-        td {row.getCreated()}
-        td {row.getUpdated()}
-Pagination({totalPages} bind:currentPage='{currentPage}')
+        //td {row.getCreated()}
+        //td {row.getUpdated()}
++if('!firstRun')
+  Pagination(count='{$count}' totalPages='{$totalPages}' bind:currentPage='{$currentPage}' reFetch='{c.refetch(history)}' bind:maxPageLinks='{$pageSize}')
