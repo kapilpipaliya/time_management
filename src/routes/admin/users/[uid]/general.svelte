@@ -5,7 +5,7 @@
 </script>
 <script lang='ts'>
     import {TitleBar, Form, Input, ShowError} from 'index.ts';
-    import {c, A} from './_form.ts'
+    import {c, A} from '../_form.ts'
     export let uid_param = "";
     const er = c.er;
     const schema = c.schema;
@@ -18,4 +18,4 @@
     }
     (TitleBar, Form, Input, ShowError)
 </script>
-<template src='./_form.pug'></template>
+<template src='../_form.pug'></template>

@@ -12,7 +12,7 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
   tbody(slot='body' let:displayData='{displayData}')
     +each('displayData as row (row.getUid())')
       Tr(row='{row}')
-        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}' paths='/general')
         TdDelete(on:click='{c.deleteClick(row)}')
         td {row.getLogin()}
         td {row.getPassword()}
