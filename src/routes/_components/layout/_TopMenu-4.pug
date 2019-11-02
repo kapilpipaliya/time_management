@@ -22,12 +22,11 @@
           .h4.mb-0 Jack Sparrow
           div Pirate captain
         .bg-white.d-flex.flex-justify-between.flex-equal-items.p-2
-          button.button.flat-button Followers
-          button.button.flat-button Sales
-          button.button.flat-button Friends
+          a.button.primary.mr-1(href="/my") My page
+          a.button.success(href="/admin") Administration
         .bg-white.d-flex.flex-justify-between.flex-equal-items.p-2.bg-light
-          button.button.mr-1 Profile
-          button.button.ml-1 Sign out
+          a.button.primary.mr-1(href="/my/account") My Account
+          a.button.alert.ml-1(href="/my/account") Sign out
     a.app-bar-item(href='#!')
       span.mif-cogs
 //- pug_end

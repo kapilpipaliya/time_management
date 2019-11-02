@@ -21,7 +21,7 @@ class CRUD extends A.CRUDBase {
       active: false,
     }
   }
-  toInitialValues(m) {
+  toInitialValues(m: A.messages.Activity) {
     return {
       uid: m.getUid(),
       name: m.getName(),

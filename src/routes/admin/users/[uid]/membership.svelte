@@ -16,7 +16,7 @@
     const breadcrumbs = [A.bc_home, {href: A.uPath(), name: title}];
 
     let i = t.tabIndex;
-    $i = 0;
+    $i = 1;
     const lt = t.title;
     $: $lt = ($initialValues.first_name || '') + ' ' + ($initialValues.last_name || '');
 
@@ -26,5 +26,5 @@
     }
     (TitleBar, Form, Input, ShowError)
 </script>
-<template src='../_form.pug'></template>
+<template src='./_membership.pug'></template>
 

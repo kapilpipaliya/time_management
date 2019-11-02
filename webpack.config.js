@@ -17,6 +17,7 @@ module.exports = {
 		resolve: { alias, extensions, mainFields },
 		module: {
 			rules: [
+				{ test: /\.tsx?$/, loader: "ts-loader" },
 				{
 					test: /\.(svelte|html)$/,
 					use: {
@@ -51,6 +52,7 @@ module.exports = {
 		externals: Object.keys(pkg.dependencies).concat('encoding'),
 		module: {
 			rules: [
+				{ test: /\.tsx?$/, loader: "ts-loader" },
 				{
 					test: /\.(svelte|html)$/,
 					use: {

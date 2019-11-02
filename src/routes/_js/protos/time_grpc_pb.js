@@ -238,6 +238,50 @@ function deserialize_todo_GroupRes(buffer_arg) {
   return time_pb.GroupRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_todo_LoginRequest(arg) {
+  if (!(arg instanceof time_pb.LoginRequest)) {
+    throw new Error('Expected argument of type todo.LoginRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_LoginRequest(buffer_arg) {
+  return time_pb.LoginRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_LoginResponse(arg) {
+  if (!(arg instanceof time_pb.LoginResponse)) {
+    throw new Error('Expected argument of type todo.LoginResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_LoginResponse(buffer_arg) {
+  return time_pb.LoginResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_LogoutRequest(arg) {
+  if (!(arg instanceof time_pb.LogoutRequest)) {
+    throw new Error('Expected argument of type todo.LogoutRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_LogoutRequest(buffer_arg) {
+  return time_pb.LogoutRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_LogoutResponse(arg) {
+  if (!(arg instanceof time_pb.LogoutResponse)) {
+    throw new Error('Expected argument of type todo.LogoutResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_LogoutResponse(buffer_arg) {
+  return time_pb.LogoutResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_todo_MenuRequest(arg) {
   if (!(arg instanceof time_pb.MenuRequest)) {
     throw new Error('Expected argument of type todo.MenuRequest');
@@ -346,6 +390,39 @@ function serialize_todo_PriorityRes(arg) {
 
 function deserialize_todo_PriorityRes(buffer_arg) {
   return time_pb.PriorityRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_ProfileMutationReq(arg) {
+  if (!(arg instanceof time_pb.ProfileMutationReq)) {
+    throw new Error('Expected argument of type todo.ProfileMutationReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_ProfileMutationReq(buffer_arg) {
+  return time_pb.ProfileMutationReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_ProfileReq(arg) {
+  if (!(arg instanceof time_pb.ProfileReq)) {
+    throw new Error('Expected argument of type todo.ProfileReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_ProfileReq(buffer_arg) {
+  return time_pb.ProfileReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_ProfileRes(arg) {
+  if (!(arg instanceof time_pb.ProfileRes)) {
+    throw new Error('Expected argument of type todo.ProfileRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_ProfileRes(buffer_arg) {
+  return time_pb.ProfileRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_todo_RegisterRequest(arg) {
@@ -480,6 +557,39 @@ function deserialize_todo_StatusRes(buffer_arg) {
   return time_pb.StatusRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_todo_SystemSettingGeneralReq(arg) {
+  if (!(arg instanceof time_pb.SystemSettingGeneralReq)) {
+    throw new Error('Expected argument of type todo.SystemSettingGeneralReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_SystemSettingGeneralReq(buffer_arg) {
+  return time_pb.SystemSettingGeneralReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_SystemSettingGeneralRes(arg) {
+  if (!(arg instanceof time_pb.SystemSettingGeneralRes)) {
+    throw new Error('Expected argument of type todo.SystemSettingGeneralRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_SystemSettingGeneralRes(buffer_arg) {
+  return time_pb.SystemSettingGeneralRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_SystemSettingMutationGeneralReq(arg) {
+  if (!(arg instanceof time_pb.SystemSettingMutationGeneralReq)) {
+    throw new Error('Expected argument of type todo.SystemSettingMutationGeneralReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_SystemSettingMutationGeneralReq(buffer_arg) {
+  return time_pb.SystemSettingMutationGeneralReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_todo_TypeDeleteReq(arg) {
   if (!(arg instanceof time_pb.TypeDeleteReq)) {
     throw new Error('Expected argument of type todo.TypeDeleteReq');
@@ -568,6 +678,105 @@ function deserialize_todo_UserRes(buffer_arg) {
   return time_pb.UserRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_todo_UsersSettingMutationReq(arg) {
+  if (!(arg instanceof time_pb.UsersSettingMutationReq)) {
+    throw new Error('Expected argument of type todo.UsersSettingMutationReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_UsersSettingMutationReq(buffer_arg) {
+  return time_pb.UsersSettingMutationReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_UsersSettingReq(arg) {
+  if (!(arg instanceof time_pb.UsersSettingReq)) {
+    throw new Error('Expected argument of type todo.UsersSettingReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_UsersSettingReq(buffer_arg) {
+  return time_pb.UsersSettingReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_UsersSettingRes(arg) {
+  if (!(arg instanceof time_pb.UsersSettingRes)) {
+    throw new Error('Expected argument of type todo.UsersSettingRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_UsersSettingRes(buffer_arg) {
+  return time_pb.UsersSettingRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkFlowSettingMutationReq(arg) {
+  if (!(arg instanceof time_pb.WorkFlowSettingMutationReq)) {
+    throw new Error('Expected argument of type todo.WorkFlowSettingMutationReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkFlowSettingMutationReq(buffer_arg) {
+  return time_pb.WorkFlowSettingMutationReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkFlowSettingReq(arg) {
+  if (!(arg instanceof time_pb.WorkFlowSettingReq)) {
+    throw new Error('Expected argument of type todo.WorkFlowSettingReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkFlowSettingReq(buffer_arg) {
+  return time_pb.WorkFlowSettingReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkFlowSettingRes(arg) {
+  if (!(arg instanceof time_pb.WorkFlowSettingRes)) {
+    throw new Error('Expected argument of type todo.WorkFlowSettingRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkFlowSettingRes(buffer_arg) {
+  return time_pb.WorkFlowSettingRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkPackageSettingMutationReq(arg) {
+  if (!(arg instanceof time_pb.WorkPackageSettingMutationReq)) {
+    throw new Error('Expected argument of type todo.WorkPackageSettingMutationReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkPackageSettingMutationReq(buffer_arg) {
+  return time_pb.WorkPackageSettingMutationReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkPackageSettingReq(arg) {
+  if (!(arg instanceof time_pb.WorkPackageSettingReq)) {
+    throw new Error('Expected argument of type todo.WorkPackageSettingReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkPackageSettingReq(buffer_arg) {
+  return time_pb.WorkPackageSettingReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_WorkPackageSettingRes(arg) {
+  if (!(arg instanceof time_pb.WorkPackageSettingRes)) {
+    throw new Error('Expected argument of type todo.WorkPackageSettingRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_WorkPackageSettingRes(buffer_arg) {
+  return time_pb.WorkPackageSettingRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var AccountServiceService = exports.AccountServiceService = {
   register: {
@@ -580,6 +789,28 @@ var AccountServiceService = exports.AccountServiceService = {
     requestDeserialize: deserialize_todo_RegisterRequest,
     responseSerialize: serialize_todo_RegisterResponse,
     responseDeserialize: deserialize_todo_RegisterResponse,
+  },
+  logout: {
+    path: '/todo.AccountService/Logout',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.LogoutRequest,
+    responseType: time_pb.LogoutResponse,
+    requestSerialize: serialize_todo_LogoutRequest,
+    requestDeserialize: deserialize_todo_LogoutRequest,
+    responseSerialize: serialize_todo_LogoutResponse,
+    responseDeserialize: deserialize_todo_LogoutResponse,
+  },
+  login: {
+    path: '/todo.AccountService/Login',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.LoginRequest,
+    responseType: time_pb.LoginResponse,
+    requestSerialize: serialize_todo_LoginRequest,
+    requestDeserialize: deserialize_todo_LoginRequest,
+    responseSerialize: serialize_todo_LoginResponse,
+    responseDeserialize: deserialize_todo_LoginResponse,
   },
 };
 
@@ -969,6 +1200,116 @@ var AdminServiceService = exports.AdminServiceService = {
     requestDeserialize: deserialize_todo_SchemaReq,
     responseSerialize: serialize_todo_SchemaRes,
     responseDeserialize: deserialize_todo_SchemaRes,
+  },
+  getProfile: {
+    path: '/todo.AdminService/getProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.ProfileReq,
+    responseType: time_pb.ProfileRes,
+    requestSerialize: serialize_todo_ProfileReq,
+    requestDeserialize: deserialize_todo_ProfileReq,
+    responseSerialize: serialize_todo_ProfileRes,
+    responseDeserialize: deserialize_todo_ProfileRes,
+  },
+  mutateProfile: {
+    path: '/todo.AdminService/mutateProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.ProfileMutationReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_ProfileMutationReq,
+    requestDeserialize: deserialize_todo_ProfileMutationReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getUsersSetting: {
+    path: '/todo.AdminService/getUsersSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.UsersSettingReq,
+    responseType: time_pb.UsersSettingRes,
+    requestSerialize: serialize_todo_UsersSettingReq,
+    requestDeserialize: deserialize_todo_UsersSettingReq,
+    responseSerialize: serialize_todo_UsersSettingRes,
+    responseDeserialize: deserialize_todo_UsersSettingRes,
+  },
+  mutateUsersSetting: {
+    path: '/todo.AdminService/mutateUsersSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.UsersSettingMutationReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_UsersSettingMutationReq,
+    requestDeserialize: deserialize_todo_UsersSettingMutationReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getWorkPackageSetting: {
+    path: '/todo.AdminService/getWorkPackageSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.WorkPackageSettingReq,
+    responseType: time_pb.WorkPackageSettingRes,
+    requestSerialize: serialize_todo_WorkPackageSettingReq,
+    requestDeserialize: deserialize_todo_WorkPackageSettingReq,
+    responseSerialize: serialize_todo_WorkPackageSettingRes,
+    responseDeserialize: deserialize_todo_WorkPackageSettingRes,
+  },
+  mutateWorkPackageSetting: {
+    path: '/todo.AdminService/mutateWorkPackageSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.WorkPackageSettingMutationReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_WorkPackageSettingMutationReq,
+    requestDeserialize: deserialize_todo_WorkPackageSettingMutationReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getWorkFlowSetting: {
+    path: '/todo.AdminService/getWorkFlowSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.WorkFlowSettingReq,
+    responseType: time_pb.WorkFlowSettingRes,
+    requestSerialize: serialize_todo_WorkFlowSettingReq,
+    requestDeserialize: deserialize_todo_WorkFlowSettingReq,
+    responseSerialize: serialize_todo_WorkFlowSettingRes,
+    responseDeserialize: deserialize_todo_WorkFlowSettingRes,
+  },
+  mutateWorkFlowSetting: {
+    path: '/todo.AdminService/mutateWorkFlowSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.WorkFlowSettingMutationReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_WorkFlowSettingMutationReq,
+    requestDeserialize: deserialize_todo_WorkFlowSettingMutationReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getSystemGeneralSetting: {
+    path: '/todo.AdminService/getSystemGeneralSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.SystemSettingGeneralReq,
+    responseType: time_pb.SystemSettingGeneralRes,
+    requestSerialize: serialize_todo_SystemSettingGeneralReq,
+    requestDeserialize: deserialize_todo_SystemSettingGeneralReq,
+    responseSerialize: serialize_todo_SystemSettingGeneralRes,
+    responseDeserialize: deserialize_todo_SystemSettingGeneralRes,
+  },
+  mutateSystemGeneralSetting: {
+    path: '/todo.AdminService/mutateSystemGeneralSetting',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.SystemSettingMutationGeneralReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_SystemSettingMutationGeneralReq,
+    requestDeserialize: deserialize_todo_SystemSettingMutationGeneralReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
   },
 };
 

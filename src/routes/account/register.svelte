@@ -21,7 +21,7 @@ function handleSubmit ({ detail: { values, setSubmitting, resetForm } }) {
           const token = response.getToken();
           document.cookie = `time=${token}; path=/`;
           // Todo: save cookie on context (and indexdb).
-          goto('/admin/dashboard');
+          goto('/admin');
           break;
         case messages.RegisterResponse.ErrorStatus.INVALID_USERNAME:
           er = response.getErrorMsg();

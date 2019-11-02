@@ -1,6 +1,6 @@
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
-Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
+Table.table.table-border.row-border(data!='{$data[1] || []}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
   thead(slot='head')
     th(sortKey='login' defaultsort='asc') Edit
     th Delete
@@ -13,6 +13,7 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
     +each('displayData as row (row.getUid())')
       Tr(row='{row}')
         TdEdit(row='{row}' on:click='{c.onEditClick(row)}' paths='/general')
+        //TdEdit(row='{row}' on:click='{c.onEditClick(row)}' paths='/membership')
         TdDelete(on:click='{c.deleteClick(row)}')
         td {row.getLogin()}
         td {row.getPassword()}
@@ -21,3 +22,4 @@ Table.table.table-border.row-border(data='{$data}' filters='{filters}' pageSize=
         td {row.getMail()}
 +if('!firstRun')
   Pagination(count='{$count}' totalPages='{$totalPages}' bind:currentPage='{$currentPage}' reFetch='{c.refetch(history)}' bind:maxPageLinks='{$pageSize}')
+

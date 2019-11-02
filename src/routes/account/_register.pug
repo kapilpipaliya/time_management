@@ -19,19 +19,21 @@
       .form-group.d-flex.flex-align-center.flex-justify-between
         input(type='checkbox' data-role='checkbox' data-caption="I agree to the <a href='#'>terms</a>")
         button.button.primary(type='submit' disabled='{!isValid}') Register
+
       ShowError(er='{er}')
-      .text-center.m-4 - OR -
-      .form-group
-        button.image-button.w-100.mt-1.bg-facebook.fg-white(type='button')
-          span.mif-facebook.icon
-          span.caption Sign Up using Facebook
-        button.image-button.w-100.mt-1.bg-github.fg-white(type='button')
-          span.mif-github.icon
-          span.caption Sign Up using GitHub
-        button.image-button.w-100.mt-1.bg-gitlab.fg-white(type='button')
-          span.mif-gitlab.icon
-          span.caption Sign Up using GitLab
+      +if('false')
+        .text-center.m-4 - OR -
+        .form-group
+          button.image-button.w-100.mt-1.bg-facebook.fg-white(type='button')
+            span.mif-facebook.icon
+            span.caption Sign Up using Facebook
+          button.image-button.w-100.mt-1.bg-github.fg-white(type='button')
+            span.mif-github.icon
+            span.caption Sign Up using GitHub
+          button.image-button.w-100.mt-1.bg-gitlab.fg-white(type='button')
+            span.mif-gitlab.icon
+            span.caption Sign Up using GitLab
       .form-group.border-top.bd-default.pt-2
-        a.d-block(href='\#;') I already have a membership
+        a.d-block(href='/account/login') I already have a membership
 
 //- pug_end

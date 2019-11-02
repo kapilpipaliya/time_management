@@ -18,7 +18,7 @@ class CRUD extends A.CRUDBase {
       active: false,
     }
   }
-  toInitialValues(m) {
+  toInitialValues(m: A.messages.Announcement) {
     return {
       uid: m.getUid(),
       text: m.getText(),

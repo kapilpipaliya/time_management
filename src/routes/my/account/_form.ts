@@ -5,9 +5,8 @@ export {A}
 class CRUD extends A.CRUDBase {
   constructor() {
     super();
-    this.title_name = "User";
+    this.title_name = "Profile";
     this.schema = A.yup.object().shape({
-      uid: A.yup.string(),
       login: A.yup.string().required(),
       first_name: A.yup.string().required('First Name is required'),
       last_name: A.yup.string().required('Last Name is required'),
@@ -21,9 +20,8 @@ class CRUD extends A.CRUDBase {
     return {}
   }
 
-  toInitialValues(m: A.messages.User) {
+  toInitialValues(m) {
     return {
-      uid: m.getUid(),
       login: m.getLogin(),
       first_name: m.getFirstName(),
       last_name: m.getLastName(),
@@ -33,33 +31,35 @@ class CRUD extends A.CRUDBase {
     }
   }
 
-  onFetch(p, uids = undefined) {
-    A.adminService.getUser(this.getReq(A.messages.UserReq, uids, p), this.getMeta(), this.getCallback(res => {
-      this.setData(uids, res.getUserList(), res);
-    }))
+  onFetch() {
+    const req = new A.messages.ProfileReq();
+    A.adminService.getProfile(req, this.getMeta(), this.getCallback(res => {
+      //const res  = new messages.ProfileRes();
+      this.initialValues.set(this.toInitialValues(res));
+      console.log(res.getLogin())
+    }));
   }
 
   onSubmit({detail: {values, setSubmitting, resetForm}}) {
-    const req = new A.messages.UserMutationReq();
-    const u = new A.messages.User();
-    u.setUid(values.uid);
-    u.setLogin(values.login);
-    u.setPassword(values.password);
-    u.setFirstName(values.first_name);
-    u.setLastName(values.last_name);
-    u.setMail(values.mail);
-    req.setUser(u);
+    const req = new A.messages.ProfileMutationReq();
+    req.setLogin(values.login);
+    req.setPassword(values.password);
+    req.setFirstName(values.first_name);
+    req.setLastName(values.last_name);
+    req.setMail(values.mail);
 
-    A.adminService.mutateUser(req, this.getMeta(),
-      this.muCallback(values.uid, 'User', '/admin/users', setSubmitting));
+    A.adminService.mutateProfile(req, this.getMeta(),
+      this.muCallbackInform('Profile updated successfully', setSubmitting));
   }
 
   onDelete(m) {
-    const req = new A.messages.UserDeleteReq();
+    /*const req = new A.messages.UserDeleteReq();
     const u = new A.messages.User();
     u.setUid(m.getUid());
     req.setUser(u);
     A.adminService.deleteUser(req, this.getMeta(), this.delCallback('User Deleted Successfully'));
+  */
   }
 }
+
 export const c = new CRUD();

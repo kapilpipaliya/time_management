@@ -12,7 +12,7 @@
     const currentPage = c.currentPage;
     const er = c.er;
     const data = c.data;
-    const count = c.count
+    const count = c.count;
     onMount(()=> {
         c.setPaginate(history)
         c.refetch(history)($pageSize, $currentPage);

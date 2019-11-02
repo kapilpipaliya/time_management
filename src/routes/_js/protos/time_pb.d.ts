@@ -228,6 +228,117 @@ export namespace RegisterResponse {
   export const ErrorStatus: ErrorStatusMap;
 }
 
+export class LoginRequest extends jspb.Message {
+  getUsername(): string;
+  setUsername(value: string): void;
+
+  getPassword(): string;
+  setPassword(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LoginRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LoginRequest): LoginRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LoginRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LoginRequest;
+  static deserializeBinaryFromReader(message: LoginRequest, reader: jspb.BinaryReader): LoginRequest;
+}
+
+export namespace LoginRequest {
+  export type AsObject = {
+    username: string,
+    password: string,
+  }
+}
+
+export class LoginResponse extends jspb.Message {
+  getStatus(): LoginResponse.ErrorStatusMap[keyof LoginResponse.ErrorStatusMap];
+  setStatus(value: LoginResponse.ErrorStatusMap[keyof LoginResponse.ErrorStatusMap]): void;
+
+  getToken(): string;
+  setToken(value: string): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LoginResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: LoginResponse): LoginResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LoginResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LoginResponse;
+  static deserializeBinaryFromReader(message: LoginResponse, reader: jspb.BinaryReader): LoginResponse;
+}
+
+export namespace LoginResponse {
+  export type AsObject = {
+    status: LoginResponse.ErrorStatusMap[keyof LoginResponse.ErrorStatusMap],
+    token: string,
+    errorMsg: string,
+  }
+
+  export interface ErrorStatusMap {
+    OK: 0;
+    USER_OR_PASS_NOT_MATCH: 1;
+    UNKNOWN_ERROR: 2;
+  }
+
+  export const ErrorStatus: ErrorStatusMap;
+}
+
+export class LogoutRequest extends jspb.Message {
+  getToken(): string;
+  setToken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutRequest): LogoutRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LogoutRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutRequest;
+  static deserializeBinaryFromReader(message: LogoutRequest, reader: jspb.BinaryReader): LogoutRequest;
+}
+
+export namespace LogoutRequest {
+  export type AsObject = {
+    token: string,
+  }
+}
+
+export class LogoutResponse extends jspb.Message {
+  getStatus(): LogoutResponse.ErrorStatusMap[keyof LogoutResponse.ErrorStatusMap];
+  setStatus(value: LogoutResponse.ErrorStatusMap[keyof LogoutResponse.ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutResponse.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutResponse): LogoutResponse.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LogoutResponse, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutResponse;
+  static deserializeBinaryFromReader(message: LogoutResponse, reader: jspb.BinaryReader): LogoutResponse;
+}
+
+export namespace LogoutResponse {
+  export type AsObject = {
+    status: LogoutResponse.ErrorStatusMap[keyof LogoutResponse.ErrorStatusMap],
+    errorMsg: string,
+  }
+
+  export interface ErrorStatusMap {
+    OK: 0;
+    UNKNOWN_ERROR: 2;
+  }
+
+  export const ErrorStatus: ErrorStatusMap;
+}
+
 export class User extends jspb.Message {
   getUid(): string;
   setUid(value: string): void;
@@ -1935,6 +2046,434 @@ export namespace SchemaRes {
     status: ErrorStatusMap[keyof ErrorStatusMap],
     errorMsg: string,
     text: string,
+  }
+}
+
+export class ProfileReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProfileReq.AsObject;
+  static toObject(includeInstance: boolean, msg: ProfileReq): ProfileReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ProfileReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProfileReq;
+  static deserializeBinaryFromReader(message: ProfileReq, reader: jspb.BinaryReader): ProfileReq;
+}
+
+export namespace ProfileReq {
+  export type AsObject = {
+  }
+}
+
+export class ProfileRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getLogin(): string;
+  setLogin(value: string): void;
+
+  getPassword(): string;
+  setPassword(value: string): void;
+
+  getFirstName(): string;
+  setFirstName(value: string): void;
+
+  getLastName(): string;
+  setLastName(value: string): void;
+
+  getMail(): string;
+  setMail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProfileRes.AsObject;
+  static toObject(includeInstance: boolean, msg: ProfileRes): ProfileRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ProfileRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProfileRes;
+  static deserializeBinaryFromReader(message: ProfileRes, reader: jspb.BinaryReader): ProfileRes;
+}
+
+export namespace ProfileRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    login: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    mail: string,
+  }
+}
+
+export class ProfileMutationReq extends jspb.Message {
+  getUid(): string;
+  setUid(value: string): void;
+
+  getLogin(): string;
+  setLogin(value: string): void;
+
+  getPassword(): string;
+  setPassword(value: string): void;
+
+  getFirstName(): string;
+  setFirstName(value: string): void;
+
+  getLastName(): string;
+  setLastName(value: string): void;
+
+  getMail(): string;
+  setMail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ProfileMutationReq.AsObject;
+  static toObject(includeInstance: boolean, msg: ProfileMutationReq): ProfileMutationReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ProfileMutationReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ProfileMutationReq;
+  static deserializeBinaryFromReader(message: ProfileMutationReq, reader: jspb.BinaryReader): ProfileMutationReq;
+}
+
+export namespace ProfileMutationReq {
+  export type AsObject = {
+    uid: string,
+    login: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    mail: string,
+  }
+}
+
+export class UsersSettingReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UsersSettingReq.AsObject;
+  static toObject(includeInstance: boolean, msg: UsersSettingReq): UsersSettingReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UsersSettingReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UsersSettingReq;
+  static deserializeBinaryFromReader(message: UsersSettingReq, reader: jspb.BinaryReader): UsersSettingReq;
+}
+
+export namespace UsersSettingReq {
+  export type AsObject = {
+  }
+}
+
+export class UsersSettingRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getDefaultLang(): string;
+  setDefaultLang(value: string): void;
+
+  getDefaultTimeZone(): string;
+  setDefaultTimeZone(value: string): void;
+
+  getAdminCanDelete(): string;
+  setAdminCanDelete(value: string): void;
+
+  getConsetRequired(): boolean;
+  setConsetRequired(value: boolean): void;
+
+  getConsentText(): string;
+  setConsentText(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UsersSettingRes.AsObject;
+  static toObject(includeInstance: boolean, msg: UsersSettingRes): UsersSettingRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UsersSettingRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UsersSettingRes;
+  static deserializeBinaryFromReader(message: UsersSettingRes, reader: jspb.BinaryReader): UsersSettingRes;
+}
+
+export namespace UsersSettingRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    defaultLang: string,
+    defaultTimeZone: string,
+    adminCanDelete: string,
+    consetRequired: boolean,
+    consentText: string,
+  }
+}
+
+export class UsersSettingMutationReq extends jspb.Message {
+  getDefaultLang(): string;
+  setDefaultLang(value: string): void;
+
+  getDefaultTimeZone(): string;
+  setDefaultTimeZone(value: string): void;
+
+  getAdminCanDelete(): string;
+  setAdminCanDelete(value: string): void;
+
+  getConsetRequired(): boolean;
+  setConsetRequired(value: boolean): void;
+
+  getConsentText(): string;
+  setConsentText(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UsersSettingMutationReq.AsObject;
+  static toObject(includeInstance: boolean, msg: UsersSettingMutationReq): UsersSettingMutationReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UsersSettingMutationReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UsersSettingMutationReq;
+  static deserializeBinaryFromReader(message: UsersSettingMutationReq, reader: jspb.BinaryReader): UsersSettingMutationReq;
+}
+
+export namespace UsersSettingMutationReq {
+  export type AsObject = {
+    defaultLang: string,
+    defaultTimeZone: string,
+    adminCanDelete: string,
+    consetRequired: boolean,
+    consentText: string,
+  }
+}
+
+export class WorkPackageSettingReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkPackageSettingReq.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkPackageSettingReq): WorkPackageSettingReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkPackageSettingReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkPackageSettingReq;
+  static deserializeBinaryFromReader(message: WorkPackageSettingReq, reader: jspb.BinaryReader): WorkPackageSettingReq;
+}
+
+export namespace WorkPackageSettingReq {
+  export type AsObject = {
+  }
+}
+
+export class WorkPackageSettingRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getCrossProject(): boolean;
+  setCrossProject(value: boolean): void;
+
+  getDisplaySubProject(): boolean;
+  setDisplaySubProject(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkPackageSettingRes.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkPackageSettingRes): WorkPackageSettingRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkPackageSettingRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkPackageSettingRes;
+  static deserializeBinaryFromReader(message: WorkPackageSettingRes, reader: jspb.BinaryReader): WorkPackageSettingRes;
+}
+
+export namespace WorkPackageSettingRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    crossProject: boolean,
+    displaySubProject: boolean,
+  }
+}
+
+export class WorkPackageSettingMutationReq extends jspb.Message {
+  getCrossProject(): boolean;
+  setCrossProject(value: boolean): void;
+
+  getDisplaySubProject(): boolean;
+  setDisplaySubProject(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkPackageSettingMutationReq.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkPackageSettingMutationReq): WorkPackageSettingMutationReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkPackageSettingMutationReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkPackageSettingMutationReq;
+  static deserializeBinaryFromReader(message: WorkPackageSettingMutationReq, reader: jspb.BinaryReader): WorkPackageSettingMutationReq;
+}
+
+export namespace WorkPackageSettingMutationReq {
+  export type AsObject = {
+    crossProject: boolean,
+    displaySubProject: boolean,
+  }
+}
+
+export class WorkFlowSettingReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkFlowSettingReq.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkFlowSettingReq): WorkFlowSettingReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkFlowSettingReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkFlowSettingReq;
+  static deserializeBinaryFromReader(message: WorkFlowSettingReq, reader: jspb.BinaryReader): WorkFlowSettingReq;
+}
+
+export namespace WorkFlowSettingReq {
+  export type AsObject = {
+  }
+}
+
+export class WorkFlowSettingRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getRole(): string;
+  setRole(value: string): void;
+
+  getType(): string;
+  setType(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkFlowSettingRes.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkFlowSettingRes): WorkFlowSettingRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkFlowSettingRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkFlowSettingRes;
+  static deserializeBinaryFromReader(message: WorkFlowSettingRes, reader: jspb.BinaryReader): WorkFlowSettingRes;
+}
+
+export namespace WorkFlowSettingRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    role: string,
+    type: string,
+  }
+}
+
+export class WorkFlowSettingMutationReq extends jspb.Message {
+  getRole(): string;
+  setRole(value: string): void;
+
+  getType(): string;
+  setType(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WorkFlowSettingMutationReq.AsObject;
+  static toObject(includeInstance: boolean, msg: WorkFlowSettingMutationReq): WorkFlowSettingMutationReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WorkFlowSettingMutationReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WorkFlowSettingMutationReq;
+  static deserializeBinaryFromReader(message: WorkFlowSettingMutationReq, reader: jspb.BinaryReader): WorkFlowSettingMutationReq;
+}
+
+export namespace WorkFlowSettingMutationReq {
+  export type AsObject = {
+    role: string,
+    type: string,
+  }
+}
+
+export class SystemSettingGeneralReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SystemSettingGeneralReq.AsObject;
+  static toObject(includeInstance: boolean, msg: SystemSettingGeneralReq): SystemSettingGeneralReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SystemSettingGeneralReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SystemSettingGeneralReq;
+  static deserializeBinaryFromReader(message: SystemSettingGeneralReq, reader: jspb.BinaryReader): SystemSettingGeneralReq;
+}
+
+export namespace SystemSettingGeneralReq {
+  export type AsObject = {
+  }
+}
+
+export class SystemSettingGeneralRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  getTitle(): string;
+  setTitle(value: string): void;
+
+  getWelcomeBlockTitle(): string;
+  setWelcomeBlockTitle(value: string): void;
+
+  getWelcomeBlockText(): string;
+  setWelcomeBlockText(value: string): void;
+
+  getWelcomeBlockOnHomescreen(): boolean;
+  setWelcomeBlockOnHomescreen(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SystemSettingGeneralRes.AsObject;
+  static toObject(includeInstance: boolean, msg: SystemSettingGeneralRes): SystemSettingGeneralRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SystemSettingGeneralRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SystemSettingGeneralRes;
+  static deserializeBinaryFromReader(message: SystemSettingGeneralRes, reader: jspb.BinaryReader): SystemSettingGeneralRes;
+}
+
+export namespace SystemSettingGeneralRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    title: string,
+    welcomeBlockTitle: string,
+    welcomeBlockText: string,
+    welcomeBlockOnHomescreen: boolean,
+  }
+}
+
+export class SystemSettingMutationGeneralReq extends jspb.Message {
+  getTitle(): string;
+  setTitle(value: string): void;
+
+  getWelcomeBlockTitle(): string;
+  setWelcomeBlockTitle(value: string): void;
+
+  getWelcomeBlockText(): string;
+  setWelcomeBlockText(value: string): void;
+
+  getWelcomeBlockOnHomescreen(): boolean;
+  setWelcomeBlockOnHomescreen(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SystemSettingMutationGeneralReq.AsObject;
+  static toObject(includeInstance: boolean, msg: SystemSettingMutationGeneralReq): SystemSettingMutationGeneralReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: SystemSettingMutationGeneralReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SystemSettingMutationGeneralReq;
+  static deserializeBinaryFromReader(message: SystemSettingMutationGeneralReq, reader: jspb.BinaryReader): SystemSettingMutationGeneralReq;
+}
+
+export namespace SystemSettingMutationGeneralReq {
+  export type AsObject = {
+    title: string,
+    welcomeBlockTitle: string,
+    welcomeBlockText: string,
+    welcomeBlockOnHomescreen: boolean,
   }
 }
 

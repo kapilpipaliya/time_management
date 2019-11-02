@@ -149,6 +149,166 @@ proto.todo.AccountServicePromiseClient.prototype.register =
 
 
 /**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.LogoutRequest,
+ *   !proto.todo.LogoutResponse>}
+ */
+const methodDescriptor_AccountService_Logout = new grpc.web.MethodDescriptor(
+  '/todo.AccountService/Logout',
+  grpc.web.MethodType.UNARY,
+  proto.todo.LogoutRequest,
+  proto.todo.LogoutResponse,
+  /**
+   * @param {!proto.todo.LogoutRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.LogoutResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.LogoutRequest,
+ *   !proto.todo.LogoutResponse>}
+ */
+const methodInfo_AccountService_Logout = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.LogoutResponse,
+  /**
+   * @param {!proto.todo.LogoutRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.LogoutResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.LogoutRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.LogoutResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.LogoutResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AccountServiceClient.prototype.logout =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AccountService/Logout',
+      request,
+      metadata || {},
+      methodDescriptor_AccountService_Logout,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.LogoutRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.LogoutResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AccountServicePromiseClient.prototype.logout =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AccountService/Logout',
+      request,
+      metadata || {},
+      methodDescriptor_AccountService_Logout);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.LoginRequest,
+ *   !proto.todo.LoginResponse>}
+ */
+const methodDescriptor_AccountService_Login = new grpc.web.MethodDescriptor(
+  '/todo.AccountService/Login',
+  grpc.web.MethodType.UNARY,
+  proto.todo.LoginRequest,
+  proto.todo.LoginResponse,
+  /**
+   * @param {!proto.todo.LoginRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.LoginResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.LoginRequest,
+ *   !proto.todo.LoginResponse>}
+ */
+const methodInfo_AccountService_Login = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.LoginResponse,
+  /**
+   * @param {!proto.todo.LoginRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.LoginResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.LoginRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.LoginResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.LoginResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AccountServiceClient.prototype.login =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AccountService/Login',
+      request,
+      metadata || {},
+      methodDescriptor_AccountService_Login,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.LoginRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.LoginResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AccountServicePromiseClient.prototype.login =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AccountService/Login',
+      request,
+      metadata || {},
+      methodDescriptor_AccountService_Login);
+};
+
+
+/**
  * @param {string} hostname
  * @param {?Object} credentials
  * @param {?Object} options
@@ -2997,6 +3157,806 @@ proto.todo.AdminServicePromiseClient.prototype.getSchema =
       request,
       metadata || {},
       methodDescriptor_AdminService_getSchema);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.ProfileReq,
+ *   !proto.todo.ProfileRes>}
+ */
+const methodDescriptor_AdminService_getProfile = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getProfile',
+  grpc.web.MethodType.UNARY,
+  proto.todo.ProfileReq,
+  proto.todo.ProfileRes,
+  /**
+   * @param {!proto.todo.ProfileReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.ProfileRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.ProfileReq,
+ *   !proto.todo.ProfileRes>}
+ */
+const methodInfo_AdminService_getProfile = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.ProfileRes,
+  /**
+   * @param {!proto.todo.ProfileReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.ProfileRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.ProfileReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.ProfileRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.ProfileRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getProfile',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.ProfileReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.ProfileRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getProfile',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.ProfileMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateProfile = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateProfile',
+  grpc.web.MethodType.UNARY,
+  proto.todo.ProfileMutationReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.ProfileMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.ProfileMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateProfile = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.ProfileMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.ProfileMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.ProfileMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateProfile',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.UsersSettingReq,
+ *   !proto.todo.UsersSettingRes>}
+ */
+const methodDescriptor_AdminService_getUsersSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getUsersSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.UsersSettingReq,
+  proto.todo.UsersSettingRes,
+  /**
+   * @param {!proto.todo.UsersSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.UsersSettingRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.UsersSettingReq,
+ *   !proto.todo.UsersSettingRes>}
+ */
+const methodInfo_AdminService_getUsersSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.UsersSettingRes,
+  /**
+   * @param {!proto.todo.UsersSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.UsersSettingRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.UsersSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.UsersSettingRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.UsersSettingRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getUsersSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getUsersSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getUsersSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.UsersSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.UsersSettingRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getUsersSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getUsersSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getUsersSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.UsersSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateUsersSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateUsersSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.UsersSettingMutationReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.UsersSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.UsersSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateUsersSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.UsersSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.UsersSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateUsersSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateUsersSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateUsersSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.UsersSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateUsersSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateUsersSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateUsersSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.WorkPackageSettingReq,
+ *   !proto.todo.WorkPackageSettingRes>}
+ */
+const methodDescriptor_AdminService_getWorkPackageSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getWorkPackageSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.WorkPackageSettingReq,
+  proto.todo.WorkPackageSettingRes,
+  /**
+   * @param {!proto.todo.WorkPackageSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.WorkPackageSettingRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.WorkPackageSettingReq,
+ *   !proto.todo.WorkPackageSettingRes>}
+ */
+const methodInfo_AdminService_getWorkPackageSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.WorkPackageSettingRes,
+  /**
+   * @param {!proto.todo.WorkPackageSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.WorkPackageSettingRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.WorkPackageSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.WorkPackageSettingRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.WorkPackageSettingRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getWorkPackageSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getWorkPackageSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getWorkPackageSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.WorkPackageSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.WorkPackageSettingRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getWorkPackageSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getWorkPackageSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getWorkPackageSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.WorkPackageSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateWorkPackageSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateWorkPackageSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.WorkPackageSettingMutationReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.WorkPackageSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.WorkPackageSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateWorkPackageSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.WorkPackageSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.WorkPackageSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateWorkPackageSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateWorkPackageSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateWorkPackageSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.WorkPackageSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateWorkPackageSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateWorkPackageSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateWorkPackageSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.WorkFlowSettingReq,
+ *   !proto.todo.WorkFlowSettingRes>}
+ */
+const methodDescriptor_AdminService_getWorkFlowSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getWorkFlowSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.WorkFlowSettingReq,
+  proto.todo.WorkFlowSettingRes,
+  /**
+   * @param {!proto.todo.WorkFlowSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.WorkFlowSettingRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.WorkFlowSettingReq,
+ *   !proto.todo.WorkFlowSettingRes>}
+ */
+const methodInfo_AdminService_getWorkFlowSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.WorkFlowSettingRes,
+  /**
+   * @param {!proto.todo.WorkFlowSettingReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.WorkFlowSettingRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.WorkFlowSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.WorkFlowSettingRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.WorkFlowSettingRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getWorkFlowSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getWorkFlowSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getWorkFlowSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.WorkFlowSettingReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.WorkFlowSettingRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getWorkFlowSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getWorkFlowSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getWorkFlowSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.WorkFlowSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateWorkFlowSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateWorkFlowSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.WorkFlowSettingMutationReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.WorkFlowSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.WorkFlowSettingMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateWorkFlowSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.WorkFlowSettingMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.WorkFlowSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateWorkFlowSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateWorkFlowSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateWorkFlowSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.WorkFlowSettingMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateWorkFlowSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateWorkFlowSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateWorkFlowSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.SystemSettingGeneralReq,
+ *   !proto.todo.SystemSettingGeneralRes>}
+ */
+const methodDescriptor_AdminService_getSystemGeneralSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getSystemGeneralSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.SystemSettingGeneralReq,
+  proto.todo.SystemSettingGeneralRes,
+  /**
+   * @param {!proto.todo.SystemSettingGeneralReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.SystemSettingGeneralRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.SystemSettingGeneralReq,
+ *   !proto.todo.SystemSettingGeneralRes>}
+ */
+const methodInfo_AdminService_getSystemGeneralSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.SystemSettingGeneralRes,
+  /**
+   * @param {!proto.todo.SystemSettingGeneralReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.SystemSettingGeneralRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.SystemSettingGeneralReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.SystemSettingGeneralRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.SystemSettingGeneralRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getSystemGeneralSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getSystemGeneralSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getSystemGeneralSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.SystemSettingGeneralReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.SystemSettingGeneralRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getSystemGeneralSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getSystemGeneralSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getSystemGeneralSetting);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.SystemSettingMutationGeneralReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateSystemGeneralSetting = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateSystemGeneralSetting',
+  grpc.web.MethodType.UNARY,
+  proto.todo.SystemSettingMutationGeneralReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.SystemSettingMutationGeneralReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.SystemSettingMutationGeneralReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateSystemGeneralSetting = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.SystemSettingMutationGeneralReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.SystemSettingMutationGeneralReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateSystemGeneralSetting =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateSystemGeneralSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateSystemGeneralSetting,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.SystemSettingMutationGeneralReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateSystemGeneralSetting =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateSystemGeneralSetting',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateSystemGeneralSetting);
 };
 
 
