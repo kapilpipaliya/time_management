@@ -1,6 +1,6 @@
 ShowError(er='{$er}')
 Add(on:click='{c.onNewClick}')
-Table.table.table-border.row-border(data!='{$data[1] || []}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
+Table.table.table-border.row-border(data!='{$data["index"] || []}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
   thead(slot='head')
     th(sortKey='login' defaultsort='asc') Edit
     th Delete
