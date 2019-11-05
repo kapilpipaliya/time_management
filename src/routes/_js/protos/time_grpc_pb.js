@@ -194,6 +194,50 @@ function deserialize_todo_ColorRes(buffer_arg) {
   return time_pb.ColorRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_todo_DocumentCategoryDeleteReq(arg) {
+  if (!(arg instanceof time_pb.DocumentCategoryDeleteReq)) {
+    throw new Error('Expected argument of type todo.DocumentCategoryDeleteReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_DocumentCategoryDeleteReq(buffer_arg) {
+  return time_pb.DocumentCategoryDeleteReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_DocumentCategoryMutationReq(arg) {
+  if (!(arg instanceof time_pb.DocumentCategoryMutationReq)) {
+    throw new Error('Expected argument of type todo.DocumentCategoryMutationReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_DocumentCategoryMutationReq(buffer_arg) {
+  return time_pb.DocumentCategoryMutationReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_DocumentCategoryReq(arg) {
+  if (!(arg instanceof time_pb.DocumentCategoryReq)) {
+    throw new Error('Expected argument of type todo.DocumentCategoryReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_DocumentCategoryReq(buffer_arg) {
+  return time_pb.DocumentCategoryReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_todo_DocumentCategoryRes(arg) {
+  if (!(arg instanceof time_pb.DocumentCategoryRes)) {
+    throw new Error('Expected argument of type todo.DocumentCategoryRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_todo_DocumentCategoryRes(buffer_arg) {
+  return time_pb.DocumentCategoryRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_todo_GroupDeleteReq(arg) {
   if (!(arg instanceof time_pb.GroupDeleteReq)) {
     throw new Error('Expected argument of type todo.GroupDeleteReq');
@@ -1055,6 +1099,39 @@ var AdminServiceService = exports.AdminServiceService = {
     responseType: time_pb.CallStatus,
     requestSerialize: serialize_todo_PriorityDeleteReq,
     requestDeserialize: deserialize_todo_PriorityDeleteReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  getDocumentCategory: {
+    path: '/todo.AdminService/getDocumentCategory',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.DocumentCategoryReq,
+    responseType: time_pb.DocumentCategoryRes,
+    requestSerialize: serialize_todo_DocumentCategoryReq,
+    requestDeserialize: deserialize_todo_DocumentCategoryReq,
+    responseSerialize: serialize_todo_DocumentCategoryRes,
+    responseDeserialize: deserialize_todo_DocumentCategoryRes,
+  },
+  mutateDocumentCategory: {
+    path: '/todo.AdminService/mutateDocumentCategory',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.DocumentCategoryMutationReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_DocumentCategoryMutationReq,
+    requestDeserialize: deserialize_todo_DocumentCategoryMutationReq,
+    responseSerialize: serialize_todo_CallStatus,
+    responseDeserialize: deserialize_todo_CallStatus,
+  },
+  deleteDocumentCategory: {
+    path: '/todo.AdminService/deleteDocumentCategory',
+    requestStream: false,
+    responseStream: false,
+    requestType: time_pb.DocumentCategoryDeleteReq,
+    responseType: time_pb.CallStatus,
+    requestSerialize: serialize_todo_DocumentCategoryDeleteReq,
+    requestDeserialize: deserialize_todo_DocumentCategoryDeleteReq,
     responseSerialize: serialize_todo_CallStatus,
     responseDeserialize: deserialize_todo_CallStatus,
   },

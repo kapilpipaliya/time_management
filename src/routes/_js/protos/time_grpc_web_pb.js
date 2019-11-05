@@ -2123,6 +2123,246 @@ proto.todo.AdminServicePromiseClient.prototype.deletePriority =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.DocumentCategoryReq,
+ *   !proto.todo.DocumentCategoryRes>}
+ */
+const methodDescriptor_AdminService_getDocumentCategory = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/getDocumentCategory',
+  grpc.web.MethodType.UNARY,
+  proto.todo.DocumentCategoryReq,
+  proto.todo.DocumentCategoryRes,
+  /**
+   * @param {!proto.todo.DocumentCategoryReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.DocumentCategoryRes.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.DocumentCategoryReq,
+ *   !proto.todo.DocumentCategoryRes>}
+ */
+const methodInfo_AdminService_getDocumentCategory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.DocumentCategoryRes,
+  /**
+   * @param {!proto.todo.DocumentCategoryReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.DocumentCategoryRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.DocumentCategoryRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.DocumentCategoryRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.getDocumentCategory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/getDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getDocumentCategory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.DocumentCategoryRes>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.getDocumentCategory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/getDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_getDocumentCategory);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.DocumentCategoryMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_mutateDocumentCategory = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/mutateDocumentCategory',
+  grpc.web.MethodType.UNARY,
+  proto.todo.DocumentCategoryMutationReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.DocumentCategoryMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.DocumentCategoryMutationReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_mutateDocumentCategory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.DocumentCategoryMutationReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.mutateDocumentCategory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/mutateDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateDocumentCategory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryMutationReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.mutateDocumentCategory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/mutateDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_mutateDocumentCategory);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.todo.DocumentCategoryDeleteReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodDescriptor_AdminService_deleteDocumentCategory = new grpc.web.MethodDescriptor(
+  '/todo.AdminService/deleteDocumentCategory',
+  grpc.web.MethodType.UNARY,
+  proto.todo.DocumentCategoryDeleteReq,
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.DocumentCategoryDeleteReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.todo.DocumentCategoryDeleteReq,
+ *   !proto.todo.CallStatus>}
+ */
+const methodInfo_AdminService_deleteDocumentCategory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.todo.CallStatus,
+  /**
+   * @param {!proto.todo.DocumentCategoryDeleteReq} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.todo.CallStatus.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryDeleteReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.todo.CallStatus)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.todo.CallStatus>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.todo.AdminServiceClient.prototype.deleteDocumentCategory =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/todo.AdminService/deleteDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_deleteDocumentCategory,
+      callback);
+};
+
+
+/**
+ * @param {!proto.todo.DocumentCategoryDeleteReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.todo.CallStatus>}
+ *     A native promise that resolves to the response
+ */
+proto.todo.AdminServicePromiseClient.prototype.deleteDocumentCategory =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/todo.AdminService/deleteDocumentCategory',
+      request,
+      metadata || {},
+      methodDescriptor_AdminService_deleteDocumentCategory);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.todo.CategoryReq,
  *   !proto.todo.CategoryRes>}
  */

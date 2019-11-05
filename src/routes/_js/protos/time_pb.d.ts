@@ -1403,6 +1403,156 @@ export namespace PriorityDeleteReq {
   }
 }
 
+export class DocumentCategory extends jspb.Message {
+  getUid(): string;
+  setUid(value: string): void;
+
+  getName(): string;
+  setName(value: string): void;
+
+  getPosition(): number;
+  setPosition(value: number): void;
+
+  getIsDefault(): boolean;
+  setIsDefault(value: boolean): void;
+
+  getActive(): boolean;
+  setActive(value: boolean): void;
+
+  hasProject(): boolean;
+  clearProject(): void;
+  getProject(): Project | undefined;
+  setProject(value?: Project): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocumentCategory.AsObject;
+  static toObject(includeInstance: boolean, msg: DocumentCategory): DocumentCategory.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocumentCategory, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocumentCategory;
+  static deserializeBinaryFromReader(message: DocumentCategory, reader: jspb.BinaryReader): DocumentCategory;
+}
+
+export namespace DocumentCategory {
+  export type AsObject = {
+    uid: string,
+    name: string,
+    position: number,
+    isDefault: boolean,
+    active: boolean,
+    project?: Project.AsObject,
+  }
+}
+
+export class DocumentCategoryReq extends jspb.Message {
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
+  hasUids(): boolean;
+  clearUids(): void;
+  getUids(): Uids | undefined;
+  setUids(value?: Uids): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocumentCategoryReq.AsObject;
+  static toObject(includeInstance: boolean, msg: DocumentCategoryReq): DocumentCategoryReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocumentCategoryReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocumentCategoryReq;
+  static deserializeBinaryFromReader(message: DocumentCategoryReq, reader: jspb.BinaryReader): DocumentCategoryReq;
+}
+
+export namespace DocumentCategoryReq {
+  export type AsObject = {
+    paginate?: Paginate.AsObject,
+    uids?: Uids.AsObject,
+  }
+}
+
+export class DocumentCategoryRes extends jspb.Message {
+  getStatus(): ErrorStatusMap[keyof ErrorStatusMap];
+  setStatus(value: ErrorStatusMap[keyof ErrorStatusMap]): void;
+
+  getErrorMsg(): string;
+  setErrorMsg(value: string): void;
+
+  hasPaginate(): boolean;
+  clearPaginate(): void;
+  getPaginate(): Paginate | undefined;
+  setPaginate(value?: Paginate): void;
+
+  clearDocumentCategoryList(): void;
+  getDocumentCategoryList(): Array<DocumentCategory>;
+  setDocumentCategoryList(value: Array<DocumentCategory>): void;
+  addDocumentCategory(value?: DocumentCategory, index?: number): DocumentCategory;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocumentCategoryRes.AsObject;
+  static toObject(includeInstance: boolean, msg: DocumentCategoryRes): DocumentCategoryRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocumentCategoryRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocumentCategoryRes;
+  static deserializeBinaryFromReader(message: DocumentCategoryRes, reader: jspb.BinaryReader): DocumentCategoryRes;
+}
+
+export namespace DocumentCategoryRes {
+  export type AsObject = {
+    status: ErrorStatusMap[keyof ErrorStatusMap],
+    errorMsg: string,
+    paginate?: Paginate.AsObject,
+    documentCategoryList: Array<DocumentCategory.AsObject>,
+  }
+}
+
+export class DocumentCategoryMutationReq extends jspb.Message {
+  hasDocumentCategory(): boolean;
+  clearDocumentCategory(): void;
+  getDocumentCategory(): DocumentCategory | undefined;
+  setDocumentCategory(value?: DocumentCategory): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocumentCategoryMutationReq.AsObject;
+  static toObject(includeInstance: boolean, msg: DocumentCategoryMutationReq): DocumentCategoryMutationReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocumentCategoryMutationReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocumentCategoryMutationReq;
+  static deserializeBinaryFromReader(message: DocumentCategoryMutationReq, reader: jspb.BinaryReader): DocumentCategoryMutationReq;
+}
+
+export namespace DocumentCategoryMutationReq {
+  export type AsObject = {
+    documentCategory?: DocumentCategory.AsObject,
+  }
+}
+
+export class DocumentCategoryDeleteReq extends jspb.Message {
+  hasDocumentCategory(): boolean;
+  clearDocumentCategory(): void;
+  getDocumentCategory(): DocumentCategory | undefined;
+  setDocumentCategory(value?: DocumentCategory): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocumentCategoryDeleteReq.AsObject;
+  static toObject(includeInstance: boolean, msg: DocumentCategoryDeleteReq): DocumentCategoryDeleteReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocumentCategoryDeleteReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocumentCategoryDeleteReq;
+  static deserializeBinaryFromReader(message: DocumentCategoryDeleteReq, reader: jspb.BinaryReader): DocumentCategoryDeleteReq;
+}
+
+export namespace DocumentCategoryDeleteReq {
+  export type AsObject = {
+    documentCategory?: DocumentCategory.AsObject,
+  }
+}
+
 export class Category extends jspb.Message {
   getUid(): string;
   setUid(value: string): void;

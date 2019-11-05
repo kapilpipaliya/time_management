@@ -1,4 +1,4 @@
-import * as A from "index.ts";
+import * as A from "../../../node_modules/index.ts";
 
 export {A}
 
@@ -20,7 +20,7 @@ class CRUD extends A.CRUDBase {
     return {}
   }
 
-  toInitialValues(m) {
+  toInitialValues(m: A.messages.ProfileRes) {
     return {
       login: m.getLogin(),
       first_name: m.getFirstName(),

@@ -1,0 +1,27 @@
+ShowError(er='{$er}')
+Add(on:click='{c.onNewClick}')
+Table.table.table-border.row-border(data!='{$data["index"] || []}' filters='{filters}' pageSize='{$pageSize}' currentPage='{$currentPage}' selectedClass='secondary')
+  thead(slot='head')
+    th Edit
+    th Delete
+    th Name
+    th Position
+    th Is Default
+    th Active
+    th Project
+    //- th Created
+    //- th Updated
+  tbody(slot='body' let:displayData='{displayData}')
+    +each('displayData as row')
+      Tr(row='{row}')
+        TdEdit(row='{row}' on:click='{c.onEditClick(row)}')
+        TdDelete(on:click='{c.deleteClick(row)}')
+        td {row.getName()}
+        td {row.getPosition()}
+        td {row.getIsDefault()}
+        td {row.getActive()}
+        td {row.getProject()}
+        //- td {row.getCreated()}
+        //- td {row.getUpdated()}
++if('!firstRun')
+  Pagination(count='{$count}' totalPages='{$totalPages}' bind:currentPage='{$currentPage}' reFetch='{c.refetch(history)}' bind:maxPageLinks='{$pageSize}')

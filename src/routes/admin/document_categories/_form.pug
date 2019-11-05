@@ -1,0 +1,34 @@
+TitleBar(title='{title}' breadcrumbs='{breadcrumbs}')
++if('showForm')
+  .m-3
+    .row
+      .bg-white.p-4.m-2
+        Form(schema='{schema}' initialValues='{$initialValues}' on:submit='{c.handleSubmit}'  let:isSubmitting let:isValid)
+          .row.mb-3
+            .cell-md-12.d-none
+              label Uid
+              Input(type='text' name='uid' )
+            .cell-md-6
+              label Name
+              Input(type='text' name='name' )
+            .cell-md-6
+              label Position
+              Input(type='number' name='position' )
+            .cell-md-6
+              label Is Default
+              Input(type='checkbox' name='is_default' )
+            .cell-md-6
+              label Active
+              Input(type='checkbox' name='active' )
+            .cell-md-6
+              label Project
+              Input(type='text' name='project' )
+            //- .cell-md-6
+            //-   label Created
+            //-   Input(type='datetime-local' name='created' )
+            //- .cell-md-6
+            //-   label Updated
+            //-   Input(type='datetime-local' name='updated' )
+          button.button.primary(type='submit' disabled='{isSubmitting || !isValid}') Submit
+          button.button.secondary.ml-1(type='button' on:click='{c.goBack}') Cancel
+          ShowError(er='{$er}')
