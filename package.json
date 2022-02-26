@@ -50,7 +50,7 @@
     "sveltejs-forms": "^1.0.0",
     "tippy.js": "^5.1.0",
     "ts-loader": "^6.2.1",
-    "urijs": "^1.19.2",
+    "urijs": "^1.19.8",
     "ws": "^7.2.0",
     "xmlhttprequest": "^1.8.0",
     "yup": "^0.27.0"
